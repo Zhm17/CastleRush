@@ -74,3 +74,4 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 Assets/Addons/
 Assets/TextMesh Pro/Documentation/
+Assets/_TerrainAutoUpgrade/
