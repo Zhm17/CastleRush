@@ -537,7 +537,7 @@ MonoBehaviour:
   m_spawnPoint: {x: 10, y: 1, z: 0}
   m_spawnerParent: {fileID: 957321861}
   m_stackDefaultCapacity: 15
-  m_itemPrefab: {fileID: 8314571181135772698, guid: bf7350189f8721f429fe4988329ba2b0, type: 3}
+  m_itemPrefab: {fileID: 6771737018650305255, guid: 4cc28a3210af5a04f8b5c541a152f842, type: 3}
 --- !u!1 &847013676
 GameObject:
   m_ObjectHideFlags: 0
