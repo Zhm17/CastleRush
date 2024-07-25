@@ -1,21 +1,30 @@
 using System.Collections;
 using UnityEngine;
 
-namespace CasteRush
+namespace CasteRush.Units
 {
     public class FollowWaypoints : MonoBehaviour
     {
-        private Transform m_currentTarget;
-        private int m_currentWaypointIndex = 0;
+        [SerializeField] private Transform m_currentTarget;
+        [SerializeField] private int m_currentWaypointIndex = 0;
 
-        private float m_startSpeed = 10f;
-        private float m_walkSpeed = 5f;
+        [SerializeField] private float m_startSpeed = 10f;
+        [SerializeField] private float m_walkSpeed = 5f;
 
         // Start is called before the first frame update
-        void Start()
+        public void StartWalking()
         {
             m_currentTarget = PathWaypoints.Points[0];
+            
+            if(m_currentWaypointIndex > 0 ) 
+                Reset();
+            
             StartCoroutine(WalkCoroutine());
+        }
+
+        private void Reset()
+        {
+            m_currentWaypointIndex = 0;
         }
 
         IEnumerator WalkCoroutine()
@@ -52,7 +61,10 @@ namespace CasteRush
         {
             //TODO Notify End Path
             StopAllCoroutines();
+            gameObject.SetActive(false);
         }
+
+        
 
     }
 }
