@@ -1,14 +1,14 @@
-using CastleRush.Units;
 using UnityEngine;
 using Utils;
 
-namespace CasteRush.Units
+namespace CastleRush.Units
 {
     [RequireComponent(typeof(Animator), typeof(FollowWaypoints))]
-    public class NPCEnemy : ItemPool
+    public abstract class NPCEnemy : ItemPool
     {
-
-        public EnemyType Type => EnemyType.TEST;
+        [Header("NPC Enemy Properties")]
+        [SerializeField] protected EnemyType m_type;
+        public abstract EnemyType Type();
 
 
         protected Animator Animator => GetComponent<Animator>();

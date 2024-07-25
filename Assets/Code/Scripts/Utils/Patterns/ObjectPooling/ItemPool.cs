@@ -22,7 +22,7 @@ namespace Utils
         }
 
         [Header("Life")]
-        [SerializeField] protected float m_lifeTime = 3f;
+        [SerializeField] protected float m_lifeTime = 10f;
         public float LifeTime => m_lifeTime;
         public virtual void SetLifeTime(float lifeTime)
         {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace CasteRush.Units
+namespace CastleRush.Units
 {
     public class PathWaypoints : MonoBehaviour
     {

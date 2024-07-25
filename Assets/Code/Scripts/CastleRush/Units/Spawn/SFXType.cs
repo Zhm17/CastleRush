@@ -1,4 +1,4 @@
-namespace CasteRush.Units
+namespace CastleRush.Units
 {
     public enum SFXType
     {

@@ -1,8 +1,7 @@
-using CastleRush.Units;
 using System.Collections;
 using UnityEngine;
 
-namespace CasteRush.Units
+namespace CastleRush.Units
 {
     [RequireComponent(typeof(RotateTowardsTarget))]
     public class FollowWaypoints : MonoBehaviour
@@ -12,9 +11,9 @@ namespace CasteRush.Units
         private void SetCurrentTarget(Transform transform)
         {
             m_currentTarget = transform;
-            if(TryGetComponent<RotateTowardsTarget>(out RotateTowardsTarget rtt))
+            if(TryGetComponent<RotateTowardsTarget>(out RotateTowardsTarget rttComponent))
             {
-                rtt.SetTarget(CurrentTarget);
+                rttComponent.SetTarget(CurrentTarget);
             }
         }
 
