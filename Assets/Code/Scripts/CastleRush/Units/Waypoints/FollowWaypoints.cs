@@ -18,7 +18,7 @@ namespace CastleRush.Units
         }
 
 
-        [SerializeField] private int m_currentWaypointIndex = 0;
+        [SerializeField] private int m_currentWaypointIndex = 1;
 
         [SerializeField] private float m_startSpeed = 5f;
         [SerializeField] private float m_walkSpeed = 5f;

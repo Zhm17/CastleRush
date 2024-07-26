@@ -19,6 +19,8 @@ namespace CastleRush.Units
 
         public NPCEnemy Create()
         {
+            SetSpawnPoint(PathWaypoints.Points[0].position);
+
             NPCEnemy newNPCEnemy = (NPCEnemy) Pool.Get();
             return newNPCEnemy;
         }

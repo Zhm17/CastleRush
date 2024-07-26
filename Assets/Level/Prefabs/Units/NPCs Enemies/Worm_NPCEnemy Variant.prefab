@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_id: 0
-  m_lifeTime: 10
+  m_lifeTime: 60
   m_type: 2
 --- !u!114 &2788530691404516136
 MonoBehaviour:

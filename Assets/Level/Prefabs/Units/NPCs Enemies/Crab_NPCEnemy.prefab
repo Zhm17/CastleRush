@@ -50,7 +50,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_id: 0
-  m_lifeTime: 10
+  m_lifeTime: 60
+  m_type: 0
 --- !u!114 &2842529279920224696
 MonoBehaviour:
   m_ObjectHideFlags: 0
