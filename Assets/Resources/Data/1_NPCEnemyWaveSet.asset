@@ -13,94 +13,31 @@ MonoBehaviour:
   m_Name: 1_NPCEnemyWaveSet
   m_EditorClassIdentifier: 
   ID: 1
+  StartCountDownTime: 6
+  CooldownTimeBetweenUnits: 2
   EnemyWave:
   - ID: 1
     Stats:
       type: 1
       lifeTime: 60
       startWalkSpeed: 5
-      walkSpeed: 5
-  - ID: 0
+  - ID: 2
     Stats:
-      type: 0
-      lifeTime: 0
-      startWalkSpeed: 0
-      walkSpeed: 0
-  - ID: 0
+      type: 1
+      lifeTime: 60
+      startWalkSpeed: 5
+  - ID: 3
     Stats:
-      type: 0
-      lifeTime: 0
-      startWalkSpeed: 0
-      walkSpeed: 0
-  - ID: 0
+      type: 1
+      lifeTime: 60
+      startWalkSpeed: 5
+  - ID: 4
     Stats:
-      type: 0
-      lifeTime: 0
-      startWalkSpeed: 0
-      walkSpeed: 0
-  - ID: 0
+      type: 1
+      lifeTime: 60
+      startWalkSpeed: 5
+  - ID: 5
     Stats:
-      type: 0
-      lifeTime: 0
-      startWalkSpeed: 0
-      walkSpeed: 0
-  - ID: 0
-    Stats:
-      type: 0
-      lifeTime: 0
-      startWalkSpeed: 0
-      walkSpeed: 0
-  - ID: 0
-    Stats:
-      type: 0
-      lifeTime: 0
-      startWalkSpeed: 0
-      walkSpeed: 0
-  - ID: 0
-    Stats:
-      type: 0
-      lifeTime: 0
-      startWalkSpeed: 0
-      walkSpeed: 0
-  - ID: 0
-    Stats:
-      type: 0
-      lifeTime: 0
-      startWalkSpeed: 0
-      walkSpeed: 0
-  - ID: 0
-    Stats:
-      type: 0
-      lifeTime: 0
-      startWalkSpeed: 0
-      walkSpeed: 0
-  - ID: 0
-    Stats:
-      type: 0
-      lifeTime: 0
-      startWalkSpeed: 0
-      walkSpeed: 0
-  - ID: 0
-    Stats:
-      type: 0
-      lifeTime: 0
-      startWalkSpeed: 0
-      walkSpeed: 0
-  - ID: 0
-    Stats:
-      type: 0
-      lifeTime: 0
-      startWalkSpeed: 0
-      walkSpeed: 0
-  - ID: 0
-    Stats:
-      type: 0
-      lifeTime: 0
-      startWalkSpeed: 0
-      walkSpeed: 0
-  - ID: 0
-    Stats:
-      type: 0
-      lifeTime: 0
-      startWalkSpeed: 0
-      walkSpeed: 0
+      type: 1
+      lifeTime: 60
+      startWalkSpeed: 5
