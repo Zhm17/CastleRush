@@ -5,7 +5,6 @@ namespace CastleRush.Units
 {
     public class EnemySpawner : ObjectPoolController, IFactory<NPCEnemy>
     {
-
         public SpawnerType Type => SpawnerType.DEFAULT;
 
 
@@ -24,5 +23,6 @@ namespace CastleRush.Units
             NPCEnemy newNPCEnemy = (NPCEnemy) Pool.Get();
             return newNPCEnemy;
         }
+
     }
 }

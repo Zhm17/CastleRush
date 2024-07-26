@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 786fc0713f9ef904f87b6e5a7e52bc71, type: 3}
+  m_Name: 1_NPCEnemyWaveSet
+  m_EditorClassIdentifier: 
+  ID: 1
+  EnemyWave:
+  - ID: 1
+    Stats:
+      type: 1
+      lifeTime: 60
+      startWalkSpeed: 5
+      walkSpeed: 5
+  - ID: 0
+    Stats:
+      type: 0
+      lifeTime: 0
+      startWalkSpeed: 0
+      walkSpeed: 0
+  - ID: 0
+    Stats:
+      type: 0
+      lifeTime: 0
+      startWalkSpeed: 0
+      walkSpeed: 0
+  - ID: 0
+    Stats:
+      type: 0
+      lifeTime: 0
+      startWalkSpeed: 0
+      walkSpeed: 0
+  - ID: 0
+    Stats:
+      type: 0
+      lifeTime: 0
+      startWalkSpeed: 0
+      walkSpeed: 0
+  - ID: 0
+    Stats:
+      type: 0
+      lifeTime: 0
+      startWalkSpeed: 0
+      walkSpeed: 0
+  - ID: 0
+    Stats:
+      type: 0
+      lifeTime: 0
+      startWalkSpeed: 0
+      walkSpeed: 0
+  - ID: 0
+    Stats:
+      type: 0
+      lifeTime: 0
+      startWalkSpeed: 0
+      walkSpeed: 0
+  - ID: 0
+    Stats:
+      type: 0
+      lifeTime: 0
+      startWalkSpeed: 0
+      walkSpeed: 0
+  - ID: 0
+    Stats:
+      type: 0
+      lifeTime: 0
+      startWalkSpeed: 0
+      walkSpeed: 0
+  - ID: 0
+    Stats:
+      type: 0
+      lifeTime: 0
+      startWalkSpeed: 0
+      walkSpeed: 0
+  - ID: 0
+    Stats:
+      type: 0
+      lifeTime: 0
+      startWalkSpeed: 0
+      walkSpeed: 0
+  - ID: 0
+    Stats:
+      type: 0
+      lifeTime: 0
+      startWalkSpeed: 0
+      walkSpeed: 0
+  - ID: 0
+    Stats:
+      type: 0
+      lifeTime: 0
+      startWalkSpeed: 0
+      walkSpeed: 0
+  - ID: 0
+    Stats:
+      type: 0
+      lifeTime: 0
+      startWalkSpeed: 0
+      walkSpeed: 0

@@ -8,7 +8,7 @@ namespace CastleRush.Units
     {
         [SerializeField] private Transform m_currentTarget;
         private Transform CurrentTarget => m_currentTarget;
-        private void SetCurrentTarget(Transform transform)
+        public void SetCurrentTarget(Transform transform)
         {
             m_currentTarget = transform;
             if(TryGetComponent<RotateTowardsTarget>(out RotateTowardsTarget rttComponent))
@@ -17,26 +17,41 @@ namespace CastleRush.Units
             }
         }
 
-
         [SerializeField] private int m_currentWaypointIndex = 1;
+        public int CurrentWaypointIndex => m_currentWaypointIndex;
+        public void SetCurrentWaypointIndex(int currentWaypointIndex)
+        {
+            m_currentWaypointIndex = currentWaypointIndex;
+        }
+        
+        [SerializeField] private float m_startWalkSpeed = 5f;
+        public float StartWalkSpeed => m_startWalkSpeed;
+        public void SetStartWalkSpeed(float walkSpeed)
+        {   
+            m_startWalkSpeed = walkSpeed;
+        }
 
-        [SerializeField] private float m_startSpeed = 5f;
         [SerializeField] private float m_walkSpeed = 5f;
+        public float WalkSpeed => m_walkSpeed;
+        public void SetWalkSpeed(float walkSpeed)
+        {
+            m_walkSpeed = walkSpeed;
+        }
 
         // Start is called before the first frame update
         public void StartWalking()
         {
-            SetCurrentTarget( PathWaypoints.Points[0]);
-            
-            if(m_currentWaypointIndex > 0 ) 
+            if(CurrentWaypointIndex > 1) 
                 Reset();
-            
+
+            SetCurrentTarget(PathWaypoints.Points[CurrentWaypointIndex]);
+
             StartCoroutine(WalkCoroutine());
         }
 
         private void Reset()
         {
-            m_currentWaypointIndex = 0;
+            SetCurrentWaypointIndex (1);
         }
 
         IEnumerator WalkCoroutine()
@@ -44,14 +59,14 @@ namespace CastleRush.Units
             while(true)
             {
                 Vector3 direction = CurrentTarget.position - transform.position;
-                transform.Translate(direction.normalized * m_walkSpeed * Time.deltaTime, Space.World);
+                transform.Translate(direction.normalized * WalkSpeed * Time.deltaTime, Space.World);
 
                 if (Vector3.Distance(transform.position, CurrentTarget.position) <= 0.4f)
                 {
                     GetNextWaypoint();
                 }
 
-                m_walkSpeed = m_startSpeed;
+                SetWalkSpeed(StartWalkSpeed);
 
                 yield return null;
             }
@@ -59,14 +74,14 @@ namespace CastleRush.Units
 
         private void GetNextWaypoint()
         {
-            if (m_currentWaypointIndex >= PathWaypoints.Points.Length - 1)
+            if (CurrentWaypointIndex >= PathWaypoints.Points.Length - 1)
             {
                 EndPath();
                 return;
             }
 
-            m_currentWaypointIndex++;
-            SetCurrentTarget( PathWaypoints.Points[m_currentWaypointIndex]);
+            SetCurrentWaypointIndex(CurrentWaypointIndex + 1);
+            SetCurrentTarget( PathWaypoints.Points[CurrentWaypointIndex]);
         }
 
         private void EndPath()

@@ -6,6 +6,7 @@ namespace Utils
 {
     public abstract class ItemPool : MonoBehaviour
     {
+        // TODO Move this attribute of class
         [Header("Item Properties")]
         [SerializeField] int m_id;
         public int ID => m_id;

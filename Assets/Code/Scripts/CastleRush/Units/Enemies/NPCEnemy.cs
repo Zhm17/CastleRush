@@ -11,6 +11,15 @@ namespace CastleRush.Units
         public abstract EnemyType Type();
 
 
+        //TODO Add Health
+
+        //TODO Add Damage
+
+        //TODO Maybe add an State AWAKE, WALK, DEAD, FINISH
+
+        //TODO Maybe add Status like FROZEN, POSIONED, PARALYZED, ...
+
+
         protected Animator Animator => GetComponent<Animator>();
         protected FollowWaypoints PathWalker => GetComponent<FollowWaypoints>();
 
