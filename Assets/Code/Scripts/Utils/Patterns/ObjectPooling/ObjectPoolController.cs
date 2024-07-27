@@ -7,44 +7,38 @@ namespace Utils
     {
         [Header("Capacity")]
         [SerializeField] protected int m_maxPoolSize = 15;
-        public int MaxPoolSize => m_maxPoolSize;
+        public int MaxPoolSize 
+            => m_maxPoolSize;
         public void SetMaxPoolSize(int maxPoolSize)
-        {
-            m_maxPoolSize = maxPoolSize;
-        }
-
+            => m_maxPoolSize = maxPoolSize;
+        
 
         // POSITION TO SPAWN
         [Header("Spawn Point Position")]
         [SerializeField] protected Vector3 m_spawnPoint;
         public Vector3 SpawnPoint => m_spawnPoint;
         public virtual void SetSpawnPoint(Vector3 position)
-        {
-            m_spawnPoint = position;
-        }
+            => m_spawnPoint = position;
+
 
         [Header("Parent")]
         [SerializeField] protected Transform m_spawnerParent;
         public Transform SpawnerParent => m_spawnerParent;
         public virtual void SetSpawnerParent(Transform parent)
-        {
-            m_spawnerParent = parent;
-        }
+            => m_spawnerParent = parent;
+
 
         [SerializeField] protected int m_stackDefaultCapacity = 15;
         public int StackDefaultCapacity => m_stackDefaultCapacity;
         public virtual void SetStackDefaultCapacity(int stackDefaultCapacity)
-        {
-            m_stackDefaultCapacity = stackDefaultCapacity;
-        }
+            => m_stackDefaultCapacity = stackDefaultCapacity;
+
 
         [Header("List")]
         [SerializeField] protected ItemPool m_itemPrefab;
         public ItemPool ItemPrefab => m_itemPrefab;
         public virtual void SetItemPrefab(ItemPool item)
-        {
-            m_itemPrefab = item;
-        }
+            => m_itemPrefab = item;
 
         
 

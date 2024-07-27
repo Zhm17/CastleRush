@@ -1,25 +1,28 @@
 using UnityEngine;
+using Generics;
 using Utils;
 
 namespace CastleRush.Units
 {
-    [RequireComponent(typeof(Animator), typeof(FollowWaypoints))]
-    public abstract class NPCEnemy : ItemPool
+    [RequireComponent(typeof(HealthComponent), typeof(FollowWaypoints), typeof(Animator))]
+    public abstract class NPCEnemy : ItemPool, IDamageable
     {
-        [Header("NPC Enemy Properties")]
-        [SerializeField] protected EnemyType m_type;
-        public abstract EnemyType Type();
+        [SerializeField] public virtual EnemyType Type => EnemyType.TEST;
+
+        // Damage to inflict
+        protected int m_damageValue = 1;
+        public int DamageValue => m_damageValue;
+        public void SetDamageValue(int value) 
+            => m_damageValue = value;
+
+        
+        // TODO Maybe add an State AWAKE, WALK, DEAD, FINISH
+
+        // TODO Maybe add Status like FROZEN, POISONED, PARALYZED, ...
 
 
-        //TODO Add Health
-
-        //TODO Add Damage
-
-        //TODO Maybe add an State AWAKE, WALK, DEAD, FINISH
-
-        //TODO Maybe add Status like FROZEN, POSIONED, PARALYZED, ...
-
-
+        // Components
+        protected HealthComponent Health => GetComponent<HealthComponent>();
         protected Animator Animator => GetComponent<Animator>();
         protected FollowWaypoints PathWalker => GetComponent<FollowWaypoints>();
 
@@ -31,24 +34,41 @@ namespace CastleRush.Units
             Active();
         }
 
+        protected virtual void Set(int id, EnemyStats stats)
+        {
+            // Set id
+            SetID(id);
+
+            // Set stats
+            SetLifeTime(stats.lifeTime);
+            SetDamageValue(stats.damageValue);
+            Health.SetMaxHealth(stats.maxHealth);
+            PathWalker.SetStartWalkSpeed(stats.startWalkSpeed);
+        }
+
         protected virtual void Active() 
         {
             PathWalker?.StartWalking();
         }
 
-        protected virtual void Hit() 
-        { 
-            // TODO Notify Hit
-            // TODO Get Damage
+        protected virtual void Hit(int value) 
+        {
+            Health?.Hit(value);
         }
 
         protected virtual void Die() 
         {
-            Animator.SetBool("Dead", true);
+            Animator?.SetBool("Dead", true);
         }
 
         protected virtual void Sleep() {
             gameObject.SetActive(false);
+        }
+
+        protected virtual void Finish()
+        {
+            // TODO Inflict damage to Player
+            // Player.Hit(DamageValue);
         }
 
     }

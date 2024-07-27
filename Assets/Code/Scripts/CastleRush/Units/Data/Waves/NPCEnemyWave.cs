@@ -1,10 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CastleRush.Units
+namespace CastleRush.Data
 {
-    [CreateAssetMenu(fileName = "NewEnemyWaveSet" +
-        "",
+    [CreateAssetMenu(fileName = "NewEnemyWaveSet",
             menuName = "Castle Rush/Wave Sets/New NPC Enemy Wave Set",
             order = 1)]
     public class NPCEnemyWave : ScriptableObject
@@ -23,7 +22,10 @@ namespace CastleRush.Units
     [System.Serializable]
     public class NPCEnemyWaveUnit
     {
+        [Header("Tracking ID")]
         public int ID; // for design reference and balance purposes
-        public EnemyStats Stats;
+
+        [Header("Enemy Stats")]
+        public Units.EnemyStats Stats;
     }
 }

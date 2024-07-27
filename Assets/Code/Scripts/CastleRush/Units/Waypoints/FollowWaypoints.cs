@@ -6,6 +6,7 @@ namespace CastleRush.Units
     [RequireComponent(typeof(RotateTowardsTarget))]
     public class FollowWaypoints : MonoBehaviour
     {
+        [Header("Target")]
         [SerializeField] private Transform m_currentTarget;
         private Transform CurrentTarget => m_currentTarget;
         public void SetCurrentTarget(Transform transform)
@@ -17,26 +18,25 @@ namespace CastleRush.Units
             }
         }
 
+        [Header("Waypoint Index")]
         [SerializeField] private int m_currentWaypointIndex = 1;
         public int CurrentWaypointIndex => m_currentWaypointIndex;
         public void SetCurrentWaypointIndex(int currentWaypointIndex)
-        {
-            m_currentWaypointIndex = currentWaypointIndex;
-        }
-        
+            => m_currentWaypointIndex = currentWaypointIndex;
+
+
+        [Header("Walk Speed")]
         [SerializeField] private float m_startWalkSpeed = 5f;
         public float StartWalkSpeed => m_startWalkSpeed;
         public void SetStartWalkSpeed(float walkSpeed)
-        {   
-            m_startWalkSpeed = walkSpeed;
-        }
+            => m_startWalkSpeed = walkSpeed;
+
 
         [SerializeField] private float m_walkSpeed = 5f;
         public float WalkSpeed => m_walkSpeed;
         public void SetWalkSpeed(float walkSpeed)
-        {
-            m_walkSpeed = walkSpeed;
-        }
+            => m_walkSpeed = walkSpeed;
+
 
         // Start is called before the first frame update
         public void StartWalking()
@@ -51,6 +51,7 @@ namespace CastleRush.Units
 
         private void Reset()
         {
+            SetWalkSpeed(StartWalkSpeed);
             SetCurrentWaypointIndex (1);
         }
 
@@ -65,8 +66,6 @@ namespace CastleRush.Units
                 {
                     GetNextWaypoint();
                 }
-
-                SetWalkSpeed(StartWalkSpeed);
 
                 yield return null;
             }

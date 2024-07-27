@@ -4,12 +4,12 @@ namespace CastleRush.Units
 {
     public class PathWaypoints : MonoBehaviour
     {
-        protected static Transform[] m_points;
-        public static Transform[] Points => m_points;
+        protected static Transform[] s_points;
+        public static Transform[] Points 
+            => s_points;
         public void SetTPointsArray(int length)
-        {
-            m_points = new Transform[length];
-        }
+            => s_points = new Transform[length];
+        
 
         protected virtual void Awake()
         {
