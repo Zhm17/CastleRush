@@ -7,7 +7,7 @@ namespace CastleRush.Units
     [RequireComponent(typeof(HealthComponent), typeof(FollowWaypoints), typeof(Animator))]
     public abstract class NPCEnemy : ItemPool, IDamageable
     {
-        [SerializeField] public virtual EnemyType Type => EnemyType.TEST;
+        [SerializeField] public virtual NPCEnemyType Type => NPCEnemyType.TEST;
 
         // Damage to inflict
         protected int m_damageValue = 1;
@@ -34,7 +34,7 @@ namespace CastleRush.Units
             Active();
         }
 
-        protected virtual void Set(int id, EnemyStats stats)
+        public virtual void Set(int id, NPCEnemyStats stats)
         {
             // Set id
             SetID(id);

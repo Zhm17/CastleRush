@@ -2,6 +2,6 @@ namespace CastleRush.Units
 {
     public class NPCEWorm : NPCEnemy
     {
-        public override EnemyType Type => EnemyType.WORM;
+        public override NPCEnemyType Type => NPCEnemyType.WORM;
     }
 }

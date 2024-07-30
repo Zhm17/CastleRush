@@ -3,9 +3,9 @@ using UnityEngine;
 namespace CastleRush.Units
 {
     [System.Serializable]
-    public class EnemyStats
+    public class NPCEnemyStats
     {
-        public EnemyType type;
+        public NPCEnemyType type;
 
         //TODO Maybe add an State AWAKE, WALK, DEAD, FINISH
 

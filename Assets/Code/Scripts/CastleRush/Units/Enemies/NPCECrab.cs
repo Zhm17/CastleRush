@@ -2,6 +2,6 @@ namespace CastleRush.Units
 {
     public class NPCECrab : NPCEnemy
     {
-        public override EnemyType Type => EnemyType.CRAB;
+        public override NPCEnemyType Type => NPCEnemyType.CRAB;
     }
 }

@@ -1,6 +1,6 @@
 namespace CastleRush.Units
 {
-    public enum EnemyType
+    public enum NPCEnemyType
     {
         TEST = 0,
         CRAB,

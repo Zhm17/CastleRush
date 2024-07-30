@@ -15,8 +15,8 @@ MonoBehaviour:
   LibID: 1
   NPCEnemyPrefabLib:
   - type: 1
-    NPCEnemyPrefab: {fileID: 0}
-  - type: 1
-    NPCEnemyPrefab: {fileID: 0}
-  - type: 1
-    NPCEnemyPrefab: {fileID: 0}
+    NPCEnemyPrefab: {fileID: 6090393406511709827, guid: 4cc28a3210af5a04f8b5c541a152f842, type: 3}
+  - type: 3
+    NPCEnemyPrefab: {fileID: 119761790315426622, guid: 44fbde936853abc449a80888d00b9999, type: 3}
+  - type: 2
+    NPCEnemyPrefab: {fileID: 2185369657389694534, guid: 82be029adaf7e4b438029c11ed110667, type: 3}
