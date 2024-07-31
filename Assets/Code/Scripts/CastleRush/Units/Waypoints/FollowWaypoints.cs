@@ -12,9 +12,11 @@ namespace CastleRush.Units
         public void SetCurrentTarget(Transform transform)
         {
             m_currentTarget = transform;
-            if(TryGetComponent<RotateTowardsTarget>(out RotateTowardsTarget rttComponent))
+            if(TryGetComponent(out RotateTowardsTarget rttComponent))
             {
-                rttComponent.SetTarget(CurrentTarget);
+                int targetIndex = (CurrentWaypointIndex == 0)? 
+                    1 : CurrentWaypointIndex;
+                rttComponent.SetTarget(PathWaypoints.Points[targetIndex]);
             }
         }
 

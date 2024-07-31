@@ -1,6 +1,7 @@
 using UnityEngine;
 using Generics;
 using Utils;
+using CastleRush.Data;
 
 namespace CastleRush.Units
 {
@@ -34,16 +35,16 @@ namespace CastleRush.Units
             Active();
         }
 
-        public virtual void Set(int id, NPCEnemyStats stats)
+        public virtual void Set(NPCEWaveUnit unit)
         {
             // Set id
-            SetID(id);
+            SetID(unit.ID);
 
             // Set stats
-            SetLifeTime(stats.lifeTime);
-            SetDamageValue(stats.damageValue);
-            Health.SetMaxHealth(stats.maxHealth);
-            PathWalker.SetStartWalkSpeed(stats.startWalkSpeed);
+            SetLifeTime(unit.Stats.lifeTime);
+            SetDamageValue(unit.Stats.damageValue);
+            Health.SetMaxHealth(unit.Stats.maxHealth);
+            PathWalker.SetStartWalkSpeed(unit.Stats.startWalkSpeed);
         }
 
         protected virtual void Active() 

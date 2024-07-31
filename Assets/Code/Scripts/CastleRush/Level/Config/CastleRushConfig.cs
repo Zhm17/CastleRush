@@ -12,8 +12,8 @@ namespace CastleRush.Data.Config
                 typeof(PrefabLibs));
 
         // NPC Enemy9 Waves Libs
-        private static Dictionary<int, NPCEnemyWaveDataSet> s_npcWavesLib;
-        public static Dictionary<int, NPCEnemyWaveDataSet> NPCEnemyWavesLib
+        private static Dictionary<int, NPCEWaveDataSet> s_npcWavesLib;
+        public static Dictionary<int, NPCEWaveDataSet> NPCEnemyWavesLib
         {
             get
             {
@@ -25,9 +25,9 @@ namespace CastleRush.Data.Config
 
         public static void RefreshWaveList()
         {
-            s_npcWavesLib = new Dictionary<int, NPCEnemyWaveDataSet>();
-            foreach (NPCEnemyWaveDataSet waveSet in
-                        Resources.LoadAll<NPCEnemyWaveDataSet>("Data/Level/Waves"))
+            s_npcWavesLib = new Dictionary<int, NPCEWaveDataSet>();
+            foreach (NPCEWaveDataSet waveSet in
+                        Resources.LoadAll<NPCEWaveDataSet>("Data/Level/Waves"))
                 s_npcWavesLib.Add(s_npcWavesLib.Count + 1, waveSet);
         }
 
@@ -36,14 +36,10 @@ namespace CastleRush.Data.Config
             if (null == PrefabLib.NPCEnemyPrefabLib) 
                 return null;
 
-            int index = 0;
-            while ( index < PrefabLib.NPCEnemyPrefabLib.Count)
+            foreach (NPCEnemyField enemy in PrefabLib.NPCEnemyPrefabLib)
             {
-                if( enemyType == PrefabLib.NPCEnemyPrefabLib[index].NPCEnemyPrefab.Type)
-                {
-                    return PrefabLib.NPCEnemyPrefabLib[index].NPCEnemyPrefab;
-                }
-                index++;
+                if( enemyType == enemy.NPCEnemyPrefab.Type)
+                    return enemy.NPCEnemyPrefab;
             }
             
             return null;

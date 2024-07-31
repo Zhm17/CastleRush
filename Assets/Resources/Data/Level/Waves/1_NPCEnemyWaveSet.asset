@@ -12,32 +12,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 786fc0713f9ef904f87b6e5a7e52bc71, type: 3}
   m_Name: 1_NPCEnemyWaveSet
   m_EditorClassIdentifier: 
-  ID: 1
-  StartCountDownTime: 6
+  Level_ID: 1
+  StartCountDownTime: 3
   CooldownTimeBetweenUnits: 2
-  EnemyWave:
+  m_npceWaveUnits:
   - ID: 1
     Stats:
       type: 1
       lifeTime: 60
+      damageValue: 1
+      maxHealth: 3
       startWalkSpeed: 5
   - ID: 2
     Stats:
       type: 1
       lifeTime: 60
+      damageValue: 1
+      maxHealth: 3
       startWalkSpeed: 5
   - ID: 3
     Stats:
-      type: 1
+      type: 2
       lifeTime: 60
+      damageValue: 1
+      maxHealth: 3
       startWalkSpeed: 5
   - ID: 4
     Stats:
-      type: 1
+      type: 2
       lifeTime: 60
+      damageValue: 1
+      maxHealth: 3
       startWalkSpeed: 5
   - ID: 5
     Stats:
-      type: 1
+      type: 3
       lifeTime: 60
+      damageValue: 1
+      maxHealth: 3
       startWalkSpeed: 5

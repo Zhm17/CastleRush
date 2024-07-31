@@ -53,13 +53,13 @@ namespace Utils
         {
             StopAllCoroutines();
 
-            Pool.Release(this);
-
-            if (!gameObject.activeInHierarchy)
-                return;
-
             if (null == Pool)
                 gameObject.SetActive(false);
+
+            if (gameObject.activeInHierarchy)
+                Pool.Release(this);
+
+            return;
         }
 
     }

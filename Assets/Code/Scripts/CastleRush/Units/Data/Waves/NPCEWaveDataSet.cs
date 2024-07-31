@@ -8,7 +8,7 @@ namespace CastleRush.Data
     [CreateAssetMenu(fileName = "NewEnemyWaveDataSet",
             menuName = "Castle Rush/Wave Sets/New NPC Enemy Wave Data Set",
             order = 1)]
-    public class NPCEnemyWaveDataSet : ScriptableObject
+    public class NPCEWaveDataSet : ScriptableObject
     {
         [SerializeField] int Level_ID; // for design reference and balance purposes
 
@@ -18,31 +18,29 @@ namespace CastleRush.Data
         //Time beetween units
         public float CooldownTimeBetweenUnits = 2f;
 
-        [SerializeField] public static List<NPCEnemyWaveUnit> m_npceWaveUnits;
-        public List<NPCEnemyWaveUnit> NPCEWaveUnits 
+        [SerializeField] public List<NPCEWaveUnit> m_npceWaveUnits;
+        public List<NPCEWaveUnit> NPCEWaveUnits 
         { 
             get
             {
                 if(null == m_npceWaveUnits)
-                    m_npceWaveUnits = new List<NPCEnemyWaveUnit>();
+                    m_npceWaveUnits = new List<NPCEWaveUnit>();
+
                 return m_npceWaveUnits;
             }
         }
 
-        public NPCEnemyStats GetNPCEnemyWaveUnitStats(int id)
+        public NPCEnemyStats GetNPCEWaveUnitStats(int id)
         {
             int totalUnits = NPCEWaveUnits.Count;
             
             if (totalUnits < 1)
                 return null;
 
-            int index = 0;
-            while (index < totalUnits)
+            foreach (NPCEWaveUnit unit in NPCEWaveUnits)
             {
-                if (id == NPCEWaveUnits[index].ID)
-                    return NPCEWaveUnits[index].Stats;
-                
-                index++;
+                if (id == unit.ID)
+                    return unit.Stats;
             }
 
             return null;
@@ -51,7 +49,7 @@ namespace CastleRush.Data
     }
 
     [Serializable]
-    public class NPCEnemyWaveUnit
+    public class NPCEWaveUnit
     {
         [Header("Tracking ID")]
         public int ID; // for design reference and balance purposes

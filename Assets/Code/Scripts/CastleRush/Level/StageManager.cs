@@ -24,7 +24,7 @@ namespace CastleRush
 
         protected override void Init()
         {
-
+            EnemyWaveSpawner.StartSpawning();
         }
     }
 }
