@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7f63bc51f3360747abce9a2dd65875a, type: 3}
+  m_Name: CastleRushPrefabLibs
+  m_EditorClassIdentifier: 
+  LibID: 1
+  NPCEnemyPrefabLib:
+  - type: 1
+    NPCEnemyPrefab: {fileID: 6090393406511709827, guid: 4cc28a3210af5a04f8b5c541a152f842, type: 3}
+  - type: 3
+    NPCEnemyPrefab: {fileID: 119761790315426622, guid: 44fbde936853abc449a80888d00b9999, type: 3}
+  - type: 2
+    NPCEnemyPrefab: {fileID: 2185369657389694534, guid: 82be029adaf7e4b438029c11ed110667, type: 3}

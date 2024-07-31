@@ -1,14 +1,20 @@
 using UnityEngine;
 
-namespace CasteRush
+namespace CastleRush.Units
 {
     public class PathWaypoints : MonoBehaviour
     {
-        public static Transform[] Points;
+        protected static Transform[] s_points;
+        public static Transform[] Points 
+            => s_points;
+        public void SetTPointsArray(int length)
+            => s_points = new Transform[length];
+        
 
-        void Awake()
+        protected virtual void Awake()
         {
-            Points = new Transform[transform.childCount];
+            SetTPointsArray(transform.childCount);
+
             for (int i = 0; i < Points.Length; i++)
             {
                 Points[i] = transform.GetChild(i);
