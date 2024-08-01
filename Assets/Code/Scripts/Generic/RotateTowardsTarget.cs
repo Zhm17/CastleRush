@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace CastleRush.Units
+namespace Generics
 {
     public class RotateTowardsTarget : MonoBehaviour
     {

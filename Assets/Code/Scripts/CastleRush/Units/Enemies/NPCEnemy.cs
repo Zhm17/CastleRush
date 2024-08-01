@@ -6,20 +6,21 @@ using CastleRush.Data;
 namespace CastleRush.Units
 {
     [RequireComponent(typeof(HealthComponent), typeof(FollowWaypoints), typeof(Animator))]
-    public abstract class NPCEnemy : ItemPool, IDamageable
+    public class NPCEnemy : ItemPool, IDamageable
     {
         [SerializeField] public virtual NPCEnemyType Type => NPCEnemyType.TEST;
 
         // Damage to inflict
         protected int m_damageValue = 1;
-        public int DamageValue => m_damageValue;
+        public int DamageValue 
+            => m_damageValue;
         public void SetDamageValue(int value) 
             => m_damageValue = value;
 
         
-        // TODO Maybe add an State AWAKE, WALK, DEAD, FINISH
+        // TODO Add an State AWAKE, WALK, DEAD, FINISH
 
-        // TODO Maybe add Status like FROZEN, POISONED, PARALYZED, ...
+        // TODO Add Status like FROZEN, POISONED, PARALYZED, ...
 
 
         // Components

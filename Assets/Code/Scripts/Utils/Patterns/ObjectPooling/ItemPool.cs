@@ -14,7 +14,8 @@ namespace Utils
 
         [Header("Pool")]
         [SerializeField] protected IObjectPool<ItemPool> m_pool;
-        public IObjectPool<ItemPool> Pool => m_pool;
+        public IObjectPool<ItemPool> Pool 
+            => m_pool;
         public virtual void SetPool(IObjectPool<ItemPool> pool)
             => m_pool = pool;
 

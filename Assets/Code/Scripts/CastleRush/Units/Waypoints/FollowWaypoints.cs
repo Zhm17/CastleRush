@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using Generics;
 
 namespace CastleRush.Units
 {
