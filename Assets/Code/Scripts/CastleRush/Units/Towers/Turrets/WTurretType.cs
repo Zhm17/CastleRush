@@ -1,6 +1,6 @@
 namespace CastleRush.Units
 {
-    public enum TurretType
+    public enum WTurretType
     {
         DEFAULT = 0,
         CROSSBOW = 1,

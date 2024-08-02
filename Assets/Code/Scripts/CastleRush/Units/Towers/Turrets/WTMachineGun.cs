@@ -1,7 +1,8 @@
 namespace CastleRush.Units 
 { 
-    public class WTMachineGun : WeaponTurret
+    public class WTMachineGun : WTurret
     {
-        public virtual TurretType Type => TurretType.MACHINE_GUN;
+        public virtual WTurretType Type 
+            => WTurretType.MACHINE_GUN;
     }
 }

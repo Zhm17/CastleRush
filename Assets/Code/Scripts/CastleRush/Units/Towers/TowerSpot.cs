@@ -4,18 +4,18 @@ namespace CastleRush.Units
 {
     public class TowerSpot : MonoBehaviour
     {
-        [SerializeField] private Transform m_spawnPosition;
-        public Transform SpawnPostion 
-            => m_spawnPosition;
+        [SerializeField] private Transform m_turretSpawnPosition;
+        public Transform TurretSpawnPostion 
+            => m_turretSpawnPosition;
 
         [Header("Turrets")]
-        [SerializeField] private WeaponTurret m_turret = null;
-        public WeaponTurret Turret 
+        [SerializeField] private WTurret m_turret = null;
+        public WTurret Turret 
             => m_turret;
-        public void SetTurret(WeaponTurret turret)
+        public void SetTurret(WTurret turret)
         {
             m_turret = turret;
-            m_turret.transform.position = SpawnPostion.position;
+            m_turret.transform.position = TurretSpawnPostion.position;
         }
     }
 }

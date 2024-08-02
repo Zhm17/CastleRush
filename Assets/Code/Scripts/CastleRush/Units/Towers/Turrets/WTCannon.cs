@@ -1,7 +1,8 @@
 namespace CastleRush.Units
 {
-    public class WTCannon : WeaponTurret
+    public class WTCannon : WTurret
     {
-        public override TurretType Type => TurretType.CANNON;
+        public override WTurretType Type 
+            => WTurretType.CANNON;
     }
 }

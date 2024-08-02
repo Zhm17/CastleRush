@@ -73,5 +73,14 @@ namespace CastleRush.Units
             // Player.Hit(DamageValue);
         }
 
+        protected virtual void OnCollisionEnter(Collision collision)
+        {
+            if(collision.collider.TryGetComponent(out WTAmmo ammoBullet))
+            {
+                // TODO for Ammo Damage Value
+                Hit(1);
+            }
+        }
+
     }
 }

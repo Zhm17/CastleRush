@@ -18,12 +18,12 @@ namespace CastleRush.Data.Config
             get
             {
                 if (null == s_npcWavesLib)
-                    RefreshWaveList();
+                    RefreshNPCEWaveList();
                 return s_npcWavesLib;
             }
         }
 
-        public static void RefreshWaveList()
+        public static void RefreshNPCEWaveList()
         {
             s_npcWavesLib = new Dictionary<int, NPCEWaveDataSet>();
             foreach (NPCEWaveDataSet waveSet in
@@ -33,16 +33,26 @@ namespace CastleRush.Data.Config
 
         public static NPCEnemy GetNPCEnemyPrefab(NPCEnemyType enemyType)
         {
-            if (null == PrefabLib.NPCEnemyPrefabLib) 
+            if (null == PrefabLib.NPCEnemyPrefabLib)
                 return null;
 
             foreach (NPCEnemyField enemy in PrefabLib.NPCEnemyPrefabLib)
             {
-                if( enemyType == enemy.NPCEnemyPrefab.Type)
+                if (enemyType == enemy.NPCEnemyPrefab.Type)
                     return enemy.NPCEnemyPrefab;
             }
-            
+
             return null;
+        }
+
+        public static WTAmmo GetWTAmmoPrefab(WTAmmoType ammoType)
+        {
+            return null;
+        }
+
+        public static WTurret GetTurretPrefab(WTurretType turretType) 
+        { 
+            return null; 
         }
     }
 }

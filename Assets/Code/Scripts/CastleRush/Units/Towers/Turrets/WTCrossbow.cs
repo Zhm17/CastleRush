@@ -1,7 +1,8 @@
 namespace CastleRush.Units
 {
-    public class WTCrossbow : WeaponTurret
+    public class WTCrossbow : WTurret
     {
-        public override TurretType Type => TurretType.CROSSBOW;
+        public override WTurretType Type 
+            => WTurretType.CROSSBOW;
     }
 }

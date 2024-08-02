@@ -4,7 +4,6 @@ using CastleRush.Data.Config;
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
-using UnityEditor.SceneManagement;
 
 namespace CastleRush.Units {
     public class NPCEnemyWaveSpawner : MonoBehaviour

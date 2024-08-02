@@ -2,6 +2,6 @@ namespace Utils
 {
     public interface IFactory<T> where T : class
     {
-        T Create();
+        T Create(UnityEngine.Transform t = null);
     }
 }
