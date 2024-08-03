@@ -2,7 +2,7 @@ namespace CastleRush.Units
 {
     public class WTACannonBall : WTAmmo
     {
-        public virtual WTAmmoType AmmoType
+        public override WTAmmoType AmmoType
             => WTAmmoType.CANNON_BALL;
     }
 }
