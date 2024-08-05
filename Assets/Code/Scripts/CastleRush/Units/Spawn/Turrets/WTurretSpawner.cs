@@ -19,12 +19,11 @@ namespace CastleRush.Units
             return item;
         }
 
-        public virtual WTurret Create(Transform transform = null)
+        public virtual WTurret Create(Vector3 position)
         {
             GetPrefabFromDataSet();
 
-            if (null != transform)
-                SetSpawnPoint(transform.position);
+            SetSpawnPoint(position);
 
             return (WTurret)Pool.Get();
         }

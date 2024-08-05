@@ -51,6 +51,7 @@ namespace CastleRush.Units {
             }
         }
 
+
         // NPC Enemy Wave Units
         [SerializeField] public static List<NPCEWaveUnit> m_npceWaveUnits;
         public List<NPCEWaveUnit> WaveUnits
@@ -66,9 +67,10 @@ namespace CastleRush.Units {
         [Header("Transform parents")]
         [SerializeField] private Transform[] SpawnerParentsT;
 
+
         // NPC Enemy Spawners
         private NPCEnemySpawner m_npcEnemySpawner;
-        private NPCEnemySpawner DefaultSpawner
+        private NPCEnemySpawner DefaultEnemySpawner
         {
             get
             {
@@ -149,20 +151,21 @@ namespace CastleRush.Units {
         public virtual NPCEnemy CreateNSetEnemy(NPCEWaveUnit unit)
         {
             NPCEnemy newEnemy = null;
+            Vector3 position = PathWaypoints.Points[0].position;
 
             switch (unit.Stats.type)
             {
                 case NPCEnemyType.TEST:
-                    newEnemy = DefaultSpawner.Create();
+                    newEnemy = DefaultEnemySpawner.Create(position);
                     break;
                 case NPCEnemyType.CRAB:
-                    newEnemy = CrabSpawner.Create();
+                    newEnemy = CrabSpawner.Create(position);
                     break;
                 case NPCEnemyType.WORM:
-                    newEnemy = WormSpawner.Create();
+                    newEnemy = WormSpawner.Create(position);
                     break;
                 case NPCEnemyType.CHEST:
-                    newEnemy = ChestSpawner.Create();
+                    newEnemy = ChestSpawner.Create(position);
                     break;
             }
 

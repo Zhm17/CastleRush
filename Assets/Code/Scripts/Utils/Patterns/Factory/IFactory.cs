@@ -2,6 +2,6 @@ namespace Utils
 {
     public interface IFactory<T> where T : class
     {
-        T Create(UnityEngine.Transform t = null);
+        T Create(UnityEngine.Vector3 position);
     }
 }

@@ -5,7 +5,7 @@ namespace CastleRush.Units
         DEFAULT,
         NPC_ENEMY,
         WEAPON_TURRET,
-        WEAPON_TURRET_AMMO,
+        WT_BULLET,
         S_FX,
         V_FX
     }

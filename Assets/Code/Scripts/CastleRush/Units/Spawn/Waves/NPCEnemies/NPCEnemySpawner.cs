@@ -28,12 +28,12 @@ namespace CastleRush.Units
             return item;
         }
 
-        public virtual NPCEnemy Create(Transform transform = null)
+        public virtual NPCEnemy Create(Vector3 position)
         {
             GetPrefabFromDataSet();
 
             // Set spawn point at the first position point of the waypoint array
-            SetSpawnPoint(PathWaypoints.Points[0].position);
+            SetSpawnPoint(position);
 
             return (NPCEnemy)Pool.Get();
         }

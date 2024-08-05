@@ -13,10 +13,15 @@ MonoBehaviour:
   m_Name: CastleRushPrefabLibs
   m_EditorClassIdentifier: 
   LibID: 1
+  WTurretPrefabLib:
+  - WTurretPrefab: {fileID: 4642803164788756984, guid: 411661012a4b399468cac0983b4e5668, type: 3}
+  - WTurretPrefab: {fileID: 6063189187136507748, guid: eb63f0dc465489a409fc06df34a317b8, type: 3}
+  - WTurretPrefab: {fileID: 3632907061805845411, guid: 12fb2141513241341a1b7b141e853b95, type: 3}
+  WTABulletsPrefabLib:
+  - WTABulletPrefab: {fileID: 3330691913421216895, guid: ab56d4b043259df44b9001a146444b69, type: 3}
+  - WTABulletPrefab: {fileID: -346218177166232497, guid: 986c8b34492a06243902e3ed8f02b6d3, type: 3}
+  - WTABulletPrefab: {fileID: 4314465394442402719, guid: 8452f482455d1834faa7833c22063ca0, type: 3}
   NPCEnemyPrefabLib:
-  - type: 1
-    NPCEnemyPrefab: {fileID: 6090393406511709827, guid: 4cc28a3210af5a04f8b5c541a152f842, type: 3}
-  - type: 3
-    NPCEnemyPrefab: {fileID: 119761790315426622, guid: 44fbde936853abc449a80888d00b9999, type: 3}
-  - type: 2
-    NPCEnemyPrefab: {fileID: 2185369657389694534, guid: 82be029adaf7e4b438029c11ed110667, type: 3}
+  - NPCEnemyPrefab: {fileID: 6090393406511709827, guid: 4cc28a3210af5a04f8b5c541a152f842, type: 3}
+  - NPCEnemyPrefab: {fileID: 119761790315426622, guid: 44fbde936853abc449a80888d00b9999, type: 3}
+  - NPCEnemyPrefab: {fileID: 2185369657389694534, guid: 82be029adaf7e4b438029c11ed110667, type: 3}

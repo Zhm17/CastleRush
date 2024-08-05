@@ -53,7 +53,7 @@ namespace CastleRush.Units
             PathWalker?.StartWalking();
         }
 
-        protected virtual void Hit(int value) 
+        public virtual void Hit(int value) 
         {
             Health?.Hit(value);
         }

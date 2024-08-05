@@ -9,21 +9,32 @@ namespace CastleRush.Data
         [UnityEngine.SerializeField]
         public int LibID = 1;
 
-        // TODO Separate in different prefab libraries
-        
+        // Separate in different prefab libraries
+
         // TODO Add SFX Lib
 
         // TODO Add VFX Lib
 
-        // TODO Add Bullets Lib
 
+        // TOWERS / TURRETS / AMMO - BULLETS
         // TODO Add Towers Lib
 
-        // TODO Add Turrets Lib
+        //Add Turrets Lib
+        [UnityEngine.Header("Weapon Turrets")]
+        [UnityEngine.SerializeField]
+        public System.Collections.Generic.List<WTurretDataField> WTurretPrefabLib;
 
+        //Add Bullets Lib
+        [UnityEngine.Header("Weapon Turret Ammo / Bullets")]
+        [UnityEngine.SerializeField]
+        public System.Collections.Generic.List<WTABulletDataField> WTABulletsPrefabLib;
+
+
+
+        // NPC Enemies
         [UnityEngine.Header("NPC Enemies")]
         [UnityEngine.SerializeField] 
-        public System.Collections.Generic.List<NPCEnemyField> NPCEnemyPrefabLib;
+        public System.Collections.Generic.List<NPCEnemyDataField> NPCEnemyPrefabLib;
 
     }
 }

@@ -31,12 +31,15 @@ namespace CastleRush.Data.Config
                 s_npcWavesLib.Add(s_npcWavesLib.Count + 1, waveSet);
         }
 
+
+
+
         public static NPCEnemy GetNPCEnemyPrefab(NPCEnemyType enemyType)
         {
             if (null == PrefabLib.NPCEnemyPrefabLib)
                 return null;
 
-            foreach (NPCEnemyField enemy in PrefabLib.NPCEnemyPrefabLib)
+            foreach (NPCEnemyDataField enemy in PrefabLib.NPCEnemyPrefabLib)
             {
                 if (enemyType == enemy.NPCEnemyPrefab.Type)
                     return enemy.NPCEnemyPrefab;
@@ -47,11 +50,23 @@ namespace CastleRush.Data.Config
 
         public static WTAmmo GetWTAmmoPrefab(WTAmmoType ammoType)
         {
+            if (null == PrefabLib.WTABulletsPrefabLib)
+                return null;
+
+            foreach (WTABulletDataField bullet in PrefabLib.WTABulletsPrefabLib)
+            {
+                if (ammoType == bullet.WTABulletPrefab.AmmoType)
+                    return bullet.WTABulletPrefab;
+            }
+
             return null;
         }
 
         public static WTurret GetTurretPrefab(WTurretType turretType) 
-        { 
+        {
+            if (null == PrefabLib.WTurretPrefabLib)
+                return null;
+
             return null; 
         }
     }

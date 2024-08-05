@@ -6,7 +6,7 @@ namespace CastleRush.Units
 {
     public class WTAmmoSpawner : ObjectPoolController, IFactory<WTAmmo>
     {
-        public virtual SpawnerType Type => SpawnerType.WEAPON_TURRET_AMMO;
+        public virtual SpawnerType Type => SpawnerType.WT_BULLET;
         public virtual WTAmmoType AmmoType => WTAmmoType.DEFAULT_AMMO;
 
         [SerializeField] private Transform m_turretSpawnPosition;
@@ -22,12 +22,11 @@ namespace CastleRush.Units
             return item;
         }
 
-        public virtual WTAmmo Create(Transform transform = null)
+        public virtual WTAmmo Create(Vector3 position)
         {
             GetPrefabFromDataSet();
             
-            if(null != transform)
-                SetSpawnPoint(transform.position);
+            SetSpawnPoint(position);
 
             return (WTAmmo)Pool.Get();
         }
