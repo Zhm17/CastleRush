@@ -5,11 +5,13 @@ namespace Generics
     public class RotateTowardsTarget : MonoBehaviour
     {
         [SerializeField] private float m_rotationSpeed = 100f;
-        private float RotationSpeed =>  m_rotationSpeed;
+        private float RotationSpeed 
+            =>  m_rotationSpeed;
 
 
-        [SerializeField] private Transform m_target;
-        public Transform Target => m_target;
+        [SerializeField] private Transform m_target = null;
+        public Transform Target 
+            => m_target;
         public void SetTarget(Transform target)
         {
             m_target = target;
@@ -33,7 +35,7 @@ namespace Generics
             transform.rotation =
                 Quaternion.Slerp(transform.rotation,
                                     lookRotation,
-                                    Time.deltaTime * RotationSpeed);
+                                    RotationSpeed * Time.deltaTime);
         }
 
     }

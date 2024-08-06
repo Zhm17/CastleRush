@@ -13,18 +13,13 @@ namespace CastleRush.Units
             => WTAmmoType.DEFAULT_AMMO;
 
 
-        protected NPCEnemyTargetDetector m_targetDetector;
+
+        [Header("NPC Enemy Detector")]
+        [SerializeField] protected NPCEnemyTargetDetector m_targetDetector;
         public NPCEnemyTargetDetector TargetDetector
-        {
-            get
-            {
-                if (null == m_targetDetector)
-                    m_targetDetector = gameObject.AddComponent<NPCEnemyTargetDetector>();
-                return m_targetDetector;
-            }
-        }
+            => m_targetDetector; 
         public NPCEnemy Target
-            => TargetDetector!.Target;
+            => TargetDetector?.Target;
 
 
 
@@ -44,11 +39,11 @@ namespace CastleRush.Units
         
 
 
-        [SerializeField] protected float m_timeRemaining = 0f;
+        [SerializeField] protected float m_timeRemaining = 0.5f;
         public float TimeRemaining 
             => m_timeRemaining;
         public void ResetTimeRemaining()
-            => m_cooldownTime = CooldownTime;
+            => m_timeRemaining = CooldownTime;
         public void ReduceTimeRemaining(float timeInSeconds)
             => m_timeRemaining -= timeInSeconds;
 
@@ -56,21 +51,14 @@ namespace CastleRush.Units
 
         protected override void OnEnable()
         {
-            StartCoroutine(ShootCoroutine());
-        }
-
-        protected override void OnDisable()
-        {
-            StopAllCoroutines();
-        }
-
-        protected override void OnDestroy()
-        {
-            StopAllCoroutines();
+            base.OnEnable();
+            StartCoroutine(DefendingCoroutine());
         }
 
         protected virtual void Shoot()
         {
+            ResetTimeRemaining();
+
             WTAmmo bullet =
                 WTABulletFactory.
                     Instance.
@@ -79,20 +67,17 @@ namespace CastleRush.Units
                             FirePoint.position,
                             Target.transform
                         );
-
-            ResetTimeRemaining();
         }
         
 
-        protected IEnumerator ShootCoroutine()
+        protected virtual IEnumerator DefendingCoroutine()
         {
             while (true)
             {
                 ReduceTimeRemaining(Time.deltaTime);
 
-                if ( TimeRemaining <= 0f &&
-                     null != Target )
-                            Shoot();
+                if ( TimeRemaining <= 0f && Target )
+                    Shoot();
 
                 yield return true;
             }

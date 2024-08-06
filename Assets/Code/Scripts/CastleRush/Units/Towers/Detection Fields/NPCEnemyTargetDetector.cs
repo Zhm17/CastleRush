@@ -9,11 +9,11 @@ namespace CastleRush.Units
     public class NPCEnemyTargetDetector : MonoBehaviour
     {
         [Header("NPC Enemy Target")]
-        [SerializeField] protected NPCEnemy m_Target = null;
+        protected NPCEnemy m_target = null;
         public NPCEnemy Target 
-            => m_Target;
+            => m_target;
         protected void SetTarget(NPCEnemy enemyTarget)
-            => m_Target = enemyTarget;
+            => m_target = enemyTarget;
 
         [Header("Near Enemies Detected")]
         [SerializeField] protected List<NPCEnemy> m_nearEnemiesList;
@@ -26,7 +26,7 @@ namespace CastleRush.Units
                 return m_nearEnemiesList;
             }
         }
-        protected void AddNewTarget(NPCEnemy enemyTarget)
+        protected void AddNewNearEnemy(NPCEnemy enemyTarget)
             => m_nearEnemiesList.Add(enemyTarget);
 
         protected void RemoveEnemy(NPCEnemy nearEnemy) 
@@ -80,7 +80,7 @@ namespace CastleRush.Units
         {
             if (other.TryGetComponent(out NPCEnemy enemyTarget))
             {
-                AddNewTarget(enemyTarget);
+                AddNewNearEnemy(enemyTarget);
 
                 if (!Target || 
                     !Target.gameObject.activeInHierarchy)

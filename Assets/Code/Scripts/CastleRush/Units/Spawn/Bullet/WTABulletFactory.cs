@@ -62,7 +62,7 @@ namespace CastleRush.Units
                 if(null == m_wtaCannonBallSpawner)
                 {
                     m_wtaCannonBallSpawner = gameObject.AddComponent<WTACannonBallSpawner>();
-                    m_wtaBulletGunSpawner.SetSpawnerParent(SpawnerParentsT[3]);
+                    m_wtaCannonBallSpawner.SetSpawnerParent(SpawnerParentsT[3]);
                 }
                 return m_wtaCannonBallSpawner;
             }
@@ -77,8 +77,7 @@ namespace CastleRush.Units
         {
             WTAmmo newBullet = Create(ammoType, position);
             
-            if ( null != newBullet )
-                newBullet.SetTarget(target);
+            newBullet?.SetTarget(target);
 
             return newBullet;
         }

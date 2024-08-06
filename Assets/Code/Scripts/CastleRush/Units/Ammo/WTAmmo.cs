@@ -44,28 +44,22 @@ namespace CastleRush.Units
 
         protected override void OnEnable()
         {
+            base.OnEnable();
             StartCoroutine(TrajectoryCoroutine());
-        }
-
-        protected override void OnDisable()
-        {
-            StopAllCoroutines();
-        }
-
-        protected override void OnDestroy()
-        {
-            StopAllCoroutines();
         }
 
         IEnumerator TrajectoryCoroutine()
         {
-            while(null != Target)
+            while(true)
             {
-                Vector3 dir = Target.position - transform.position;
-                float distanceThisFrame = Speed * Time.deltaTime;
+                if (Target)
+                {
+                    Vector3 dir = Target.position - transform.position;
+                    float distanceThisFrame = Speed * Time.deltaTime;
 
-                transform.Translate(dir.normalized * distanceThisFrame, Space.World);
-                transform.LookAt(Target);
+                    transform.Translate(dir.normalized * distanceThisFrame, Space.World);
+                    transform.LookAt(Target);
+                }
 
                 yield return null;
             }
@@ -77,14 +71,14 @@ namespace CastleRush.Units
 
             enemy.Hit(DamageValue);
 
-            ReturnToPool();
+            gameObject.SetActive(false);
         }
 
-        private void OnCollisionEnter(Collision collision)
+        private void OnTriggerEnter(Collider collider)
         {
             //TODO Spawn / Play / ask for impact VFX
 
-            if (collision.transform.TryGetComponent(out NPCEnemy enemy))
+            if (collider.transform.TryGetComponent(out NPCEnemy enemy))
             {
                 HitTarget(enemy);
             }

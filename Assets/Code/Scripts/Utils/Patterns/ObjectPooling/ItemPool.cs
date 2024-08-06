@@ -36,12 +36,13 @@ namespace Utils
 
         protected virtual void OnDisable()
         {
+            StopAllCoroutines();
             ReturnToPool();
         }
 
         protected virtual void OnDestroy()
         {
-            ReturnToPool();
+            StopAllCoroutines();
         }
 
         protected virtual IEnumerator SelfDestruct()
@@ -54,13 +55,13 @@ namespace Utils
         {
             StopAllCoroutines();
 
-            if (null == Pool)
-                gameObject.SetActive(false);
-
-            if (gameObject.activeInHierarchy)
+            if (null != Pool)
+            {
                 Pool.Release(this);
+                return;
+            }
 
-            return;
+            Destroy(gameObject);
         }
 
     }

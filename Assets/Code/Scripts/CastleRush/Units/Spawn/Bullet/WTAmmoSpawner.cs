@@ -9,11 +9,6 @@ namespace CastleRush.Units
         public virtual SpawnerType Type => SpawnerType.WT_BULLET;
         public virtual WTAmmoType AmmoType => WTAmmoType.DEFAULT_AMMO;
 
-        [SerializeField] private Transform m_turretSpawnPosition;
-        public Transform TurretSpawnPostion
-            => m_turretSpawnPosition;
-        public void SetTurretSpawnPosition(Transform transformSpawnPosition)
-            => m_turretSpawnPosition = transformSpawnPosition;
 
         protected virtual ItemPool GetPrefabFromDataSet()
         {
@@ -28,7 +23,7 @@ namespace CastleRush.Units
             
             SetSpawnPoint(position);
 
-            return (WTAmmo)Pool.Get();
+            return (WTAmmo) Pool.Get();
         }
     }
 }
