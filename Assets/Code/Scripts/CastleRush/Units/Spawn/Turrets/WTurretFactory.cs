@@ -1,8 +1,9 @@
 using UnityEngine;
+using Utils;
 
 namespace CastleRush.Units
 {
-    public class WTurretFactory : MonoBehaviour
+    public class WTurretFactory : Singleton<WTurretFactory>
     {
         public SpawnerType Type => SpawnerType.WEAPON_TURRET;
 
@@ -68,6 +69,10 @@ namespace CastleRush.Units
             }
         }
 
+        protected override void Init()
+        {
+
+        }
 
         public virtual WTurret CreateNSet(WTurretType turretType, Vector3 position)
         {

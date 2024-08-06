@@ -25,7 +25,7 @@ namespace CastleRush.Units
 
             SetSpawnPoint(position);
 
-            return (WTurret)Pool.Get();
+            return (WTurret) Pool.Get();
         }
     }
 }

@@ -1,8 +1,9 @@
 using UnityEngine;
+using Utils;
 
 namespace CastleRush.Units
 {
-    public class WTABulletFactory : MonoBehaviour
+    public class WTABulletFactory : Singleton<WTABulletFactory>
     {
         public SpawnerType Type => SpawnerType.WT_BULLET;
 
@@ -67,6 +68,10 @@ namespace CastleRush.Units
             }
         }
 
+        protected override void Init()
+        {
+
+        }
 
         public virtual WTAmmo CreateNSet(WTAmmoType ammoType, Vector3 position)
         {

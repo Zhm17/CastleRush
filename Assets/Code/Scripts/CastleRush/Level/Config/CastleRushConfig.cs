@@ -67,6 +67,12 @@ namespace CastleRush.Data.Config
             if (null == PrefabLib.WTurretPrefabLib)
                 return null;
 
+            foreach(WTurretDataField turret in PrefabLib.WTurretPrefabLib)
+            {
+                if(turretType == turret.WTurretPrefab.Type)
+                    return turret.WTurretPrefab;
+            }
+
             return null; 
         }
     }
