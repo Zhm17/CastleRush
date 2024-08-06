@@ -32,7 +32,7 @@ namespace CastleRush.UI
                 if (hit.transform.TryGetComponent(out TowerSpot tower))
                     tower.SetTurret(
                         WTurretFactory.Instance.CreateNSet(
-                            Type, Vector3.zero
+                                Type, Vector3.zero
                             )
                         );
             }

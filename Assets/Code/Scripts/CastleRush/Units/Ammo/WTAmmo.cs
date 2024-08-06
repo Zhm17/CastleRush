@@ -10,8 +10,8 @@ namespace CastleRush.Units
         [SerializeField] public virtual WTAmmoType AmmoType
             => WTAmmoType.DEFAULT_AMMO;
 
+        // Bullet Traject and Interaction
         [Header("Target")]
-        //TODO Bullet Traject and Interaction
         [SerializeField] protected Transform m_target = null;
         public Transform Target 
             => m_target;

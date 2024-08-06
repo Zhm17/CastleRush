@@ -73,7 +73,17 @@ namespace CastleRush.Units
 
         }
 
-        public virtual WTAmmo CreateNSet(WTAmmoType ammoType, Vector3 position)
+        public virtual WTAmmo CreateNSet(WTAmmoType ammoType, Vector3 position, Transform target)
+        {
+            WTAmmo newBullet = Create(ammoType, position);
+            
+            if ( null != newBullet )
+                newBullet.SetTarget(target);
+
+            return newBullet;
+        }
+
+        public virtual WTAmmo Create(WTAmmoType ammoType, Vector3 position)
         {
             WTAmmo newBullet = null;
 

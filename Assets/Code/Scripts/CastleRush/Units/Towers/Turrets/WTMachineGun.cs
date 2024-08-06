@@ -4,5 +4,8 @@ namespace CastleRush.Units
     {
         public override WTurretType Type 
             => WTurretType.MACHINE_GUN;
+
+        public override WTAmmoType AmmoType
+            => WTAmmoType.BULLET_GUN;
     }
 }

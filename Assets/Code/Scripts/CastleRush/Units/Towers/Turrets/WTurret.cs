@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using Utils;
 
@@ -5,11 +6,14 @@ namespace CastleRush.Units
 {
     public class WTurret : ItemPool
     {
-        [SerializeField] public virtual WTurretType Type 
+        public virtual WTurretType Type 
             => WTurretType.DEFAULT;
 
-        [Header("Target Detector")]
-        [SerializeField] protected NPCEnemyTargetDetector m_targetDetector;
+        public virtual WTAmmoType AmmoType
+            => WTAmmoType.DEFAULT_AMMO;
+
+
+        protected NPCEnemyTargetDetector m_targetDetector;
         public NPCEnemyTargetDetector TargetDetector
         {
             get
@@ -19,6 +23,9 @@ namespace CastleRush.Units
                 return m_targetDetector;
             }
         }
+        public NPCEnemy Target
+            => TargetDetector!.Target;
+
 
 
         [Header("Fire Properties")]
@@ -26,29 +33,69 @@ namespace CastleRush.Units
         public Transform FirePoint 
             => m_firePoint;
 
+
+        // Cooldown Time
         [Header("Cooldown")]
-        [SerializeField] protected float m_shootingCooldownTime = 0.5f;
-        public float ShootCooldownTime 
-            => m_shootingCooldownTime;
+        [SerializeField] protected float m_cooldownTime = 0.5f;
+        public float CooldownTime 
+            => m_cooldownTime;
         public void SetShootingCooldownTime(float timeInSeconds) 
-            => m_shootingCooldownTime = timeInSeconds;
+            => m_cooldownTime = timeInSeconds;
         
 
 
-        [SerializeField] protected float m_shootingCooldownTimeRemaining = 0f;
-        public float ShootingCooldownTimeRemaining 
-            => m_shootingCooldownTimeRemaining;
-        public void ReduceShootingCooldownTimeRemaining(float timeInSeconds)
-            => m_shootingCooldownTimeRemaining -= timeInSeconds;
+        [SerializeField] protected float m_timeRemaining = 0f;
+        public float TimeRemaining 
+            => m_timeRemaining;
+        public void ResetTimeRemaining()
+            => m_cooldownTime = CooldownTime;
+        public void ReduceTimeRemaining(float timeInSeconds)
+            => m_timeRemaining -= timeInSeconds;
 
 
 
-        [Header("Prefab")]
-        [SerializeField] protected WTAmmo m_ammoPrefab;
-        public WTAmmo AmmoPrefab => m_ammoPrefab;
+        protected override void OnEnable()
+        {
+            StartCoroutine(ShootCoroutine());
+        }
 
+        protected override void OnDisable()
+        {
+            StopAllCoroutines();
+        }
 
-        protected virtual void Shoot() { }
+        protected override void OnDestroy()
+        {
+            StopAllCoroutines();
+        }
 
+        protected virtual void Shoot()
+        {
+            WTAmmo bullet =
+                WTABulletFactory.
+                    Instance.
+                        CreateNSet(
+                            AmmoType,
+                            FirePoint.position,
+                            Target.transform
+                        );
+
+            ResetTimeRemaining();
+        }
+        
+
+        protected IEnumerator ShootCoroutine()
+        {
+            while (true)
+            {
+                ReduceTimeRemaining(Time.deltaTime);
+
+                if ( TimeRemaining <= 0f &&
+                     null != Target )
+                            Shoot();
+
+                yield return true;
+            }
+        }
     }
 }

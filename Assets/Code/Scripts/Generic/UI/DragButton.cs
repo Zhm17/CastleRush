@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using CastleRush;
 
 namespace Generics
 {
@@ -7,16 +8,14 @@ namespace Generics
     {
         protected Vector2 InitialLocalPosition;
         
-        
         [SerializeField] protected bool m_onAction;
         public bool OnAction
             => m_onAction;
         protected void SetOnAction(bool flag)
             => m_onAction = flag;
 
-        [Header("Interaction")]
-        [SerializeField] protected Canvas m_interactiveCanvas;
-        public Canvas InteractiveCanvas => m_interactiveCanvas;
+        protected Canvas InteractiveCanvas 
+            => UIManager.Instance.InteractiveCanvas;
 
 
         protected virtual void Start()
