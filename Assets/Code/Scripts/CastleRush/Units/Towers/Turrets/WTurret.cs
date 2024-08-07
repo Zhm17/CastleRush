@@ -17,11 +17,12 @@ namespace CastleRush.Units
         [Header("NPC Enemy Detector")]
         [SerializeField] protected NPCEnemyTargetDetector m_targetDetector;
         public NPCEnemyTargetDetector TargetDetector
-            => m_targetDetector; 
+            => m_targetDetector;
+
+
+        [SerializeField] protected NPCEnemy m_target;
         public NPCEnemy Target
-            => TargetDetector?.Target;
-
-
+                 => m_target = TargetDetector.Target;
 
         [Header("Fire Properties")]
         [SerializeField] protected Transform m_firePoint;
@@ -76,8 +77,10 @@ namespace CastleRush.Units
             {
                 ReduceTimeRemaining(Time.deltaTime);
 
-                if ( TimeRemaining <= 0f && Target )
-                    Shoot();
+                if (Target &&
+                    Target.gameObject.activeInHierarchy && 
+                    TimeRemaining <= 0f)
+                            Shoot();
 
                 yield return true;
             }

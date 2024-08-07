@@ -43,6 +43,8 @@ namespace Generics
         {
             // TODO
             // Dead Notification
+
+            gameObject.SetActive(false);
         }
 
     }

@@ -29,8 +29,11 @@ namespace CastleRush.Units
         protected void AddNewNearEnemy(NPCEnemy enemyTarget)
             => m_nearEnemiesList.Add(enemyTarget);
 
-        protected void RemoveEnemy(NPCEnemy nearEnemy) 
-            => m_nearEnemiesList.Remove(nearEnemy);
+        protected void RemoveEnemy(NPCEnemy nearEnemy)
+        {
+            m_nearEnemiesList.Remove(nearEnemy);
+            SetNextTarget();
+        }
 
 
         protected virtual void ResetNearEnemiesList()
@@ -69,9 +72,19 @@ namespace CastleRush.Units
         {
             while (true)
             {
+                if (Target != null && 
+                    Target.gameObject.activeInHierarchy == false)
+                {
+                        RemoveEnemy(NearEnemiesList[0]);
+                        SetNextTarget();
+                }
+
                 if (Target &&
                     TryGetComponent(out RotateTowardsTarget rttComponent))
+                {
                         rttComponent.SetTarget(Target.transform);
+                }
+                
                 yield return null;
             }
         }
