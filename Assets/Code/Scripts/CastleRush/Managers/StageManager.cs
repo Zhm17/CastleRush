@@ -1,30 +1,43 @@
 using CastleRush.Units;
+using Generics;
 using UnityEngine;
 using Utils;
 
 namespace CastleRush
 {
-    [RequireComponent(typeof(NPCEnemyWaveSpawner))]
+    [RequireComponent(typeof(NPCEnemyWaveSpawner), 
+                        typeof(ScoreComponent))]
     public class StageManager : Singleton<StageManager>
     {
         [SerializeField] private int m_stageNumber = 1;
         public int StageNumber => m_stageNumber;
 
-        NPCEnemyWaveSpawner EnemyWaveSpawner
+        private NPCEnemyWaveSpawner EWaveSpawner
+            => GetComponent<NPCEnemyWaveSpawner>();
+        private ScoreComponent Scorer 
+            => GetComponent<ScoreComponent>();
+
+        protected override void Init() 
         {
-            get
-            {
-                if(TryGetComponent(out NPCEnemyWaveSpawner spawner))
-                {
-                    return spawner;
-                }
-                return null;
-            }
+            NPCEnemy.OnEnemyBeaten += Scorer.Scored;
         }
 
-        protected override void Init()
+        private void OnDisable()
         {
-            EnemyWaveSpawner.StartSpawning();
+            NPCEnemy.OnEnemyBeaten -= Scorer.Scored;
+        }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            NPCEnemy.OnEnemyBeaten -= Scorer.Scored;
+        }
+
+        public void StartMatch()
+        {
+            EWaveSpawner.StartSpawning();
+
+            Scorer.SetGoalScoreValue(EWaveSpawner.WaveUnits.Count);
         }
     }
 }

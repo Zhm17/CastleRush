@@ -25,7 +25,8 @@ namespace CastleRush.Units {
                 return null;
             }
         }
-        public NPCEWaveDataSet CurrentWaveDataSet => m_npceCurrentWaveDataSet;
+        public NPCEWaveDataSet CurrentWaveDataSet 
+            => m_npceCurrentWaveDataSet;
 
 
         // Time

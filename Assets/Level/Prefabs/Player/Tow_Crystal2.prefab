@@ -177,6 +177,8 @@ GameObject:
   m_Component:
   - component: {fileID: 400004}
   - component: {fileID: 9500000}
+  - component: {fileID: 7835057595826379750}
+  - component: {fileID: 3264140712221241524}
   - component: {fileID: 5126483906918989252}
   m_Layer: 0
   m_Name: Tow_Crystal2
@@ -222,6 +224,33 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7835057595826379750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9355e5509b630084098aff4112dfdaf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3264140712221241524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe8b4fd8eabfffc448b99b3d035cbdec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_isAlive: 1
+  m_currentHealth: 3
+  m_maxHealth: 3
 --- !u!65 &5126483906918989252
 BoxCollider:
   m_ObjectHideFlags: 0

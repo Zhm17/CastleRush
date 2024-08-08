@@ -17,8 +17,6 @@ namespace CastleRush.Data
 
 
         // TOWERS / TURRETS / AMMO - BULLETS
-        // TODO Add Towers Lib
-
         //Add Turrets Lib
         [UnityEngine.Header("Weapon Turrets")]
         [UnityEngine.SerializeField]

@@ -4,11 +4,19 @@ namespace Generics
 {
     public class HealthComponent : MonoBehaviour, IDamageable
     {
+        [SerializeField] protected bool m_isAlive = true;
+        public bool IsAlive 
+            => m_isAlive;
+        public bool SetIsAlive(bool value)
+            => m_isAlive = value;
+
+
         [SerializeField] protected int m_currentHealth = 3;
         public virtual int CurrentHealth 
             => m_currentHealth;
         public void SetCurrentHealth(int value) 
             => m_currentHealth = value;
+
 
         [SerializeField] protected int m_maxHealth = 3;
         public virtual int MaxHealth 
@@ -27,6 +35,7 @@ namespace Generics
         /// </summary>
         public virtual void ResetHealth()
         {
+            SetIsAlive(true);
             SetCurrentHealth(MaxHealth);
         }
 
@@ -41,10 +50,13 @@ namespace Generics
 
         public virtual void Die() 
         {
-            // TODO
-            // Dead Notification
+            // TODO Dead Notification - Improvement
+            // TODO Dead Notification - Remove it from NPCEnemy
+            // TODO Dead Notification - Remove it from CrystalPlatformBase
 
-            gameObject.SetActive(false);
+            SetIsAlive(false);
+
+            //gameObject.SetActive(false);
         }
 
     }

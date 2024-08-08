@@ -2,12 +2,16 @@ using UnityEngine;
 using Generics;
 using Utils;
 using CastleRush.Data;
+using System.Collections;
 
 namespace CastleRush.Units
 {
     [RequireComponent(typeof(HealthComponent), typeof(FollowWaypoints), typeof(Animator))]
     public class NPCEnemy : ItemPool, IDamageable
     {
+        public delegate void EnemyBeat(int value = 0);
+        public static event EnemyBeat OnEnemyBeaten;
+
         [SerializeField] public virtual NPCEnemyType Type => NPCEnemyType.TEST;
 
         // Damage to inflict
@@ -17,18 +21,30 @@ namespace CastleRush.Units
         public void SetDamageValue(int value) 
             => m_damageValue = value;
 
-        
+
+        // Points to Score
+        // TODO Add to the enemy stats
+        protected int m_pointsToScore = 1;
+        public int PointsToScore 
+            => m_pointsToScore;
+        public void SetPointsToScore(int pointsToScore)
+            => m_pointsToScore = pointsToScore;
+
+     
         // TODO Add an State AWAKE, WALK, DEAD, FINISH
 
         // TODO Add Status like FROZEN, POISONED, PARALYZED, ...
 
-
         // Components
-        protected HealthComponent Health => GetComponent<HealthComponent>();
-        protected Animator Animator => GetComponent<Animator>();
-        protected FollowWaypoints PathWalker => GetComponent<FollowWaypoints>();
+        protected Animator Animator 
+            => GetComponent<Animator>();
+        protected FollowWaypoints PathWalker 
+            => GetComponent<FollowWaypoints>();
+        protected HealthComponent Health 
+            => GetComponent<HealthComponent>();
 
-
+        [SerializeField] public bool IsAlive
+           => Health.IsAlive;
 
         protected override void OnEnable()
         {
@@ -51,6 +67,7 @@ namespace CastleRush.Units
         protected virtual void Active() 
         {
             PathWalker?.StartWalking();
+            StartCoroutine(LivingCoroutine());
         }
 
         public virtual void Hit(int value) 
@@ -58,27 +75,41 @@ namespace CastleRush.Units
             Health?.Hit(value);
         }
 
-        protected virtual void Die() 
+        protected IEnumerator LivingCoroutine()
         {
+            while (true)
+            {
+                if (!IsAlive)
+                    NotifyDead();
+
+                yield return null;
+            }
+        }
+
+        protected virtual void NotifyDead() 
+        {
+            StopAllCoroutines();
+
+            if (OnEnemyBeaten != null)
+                OnEnemyBeaten(PointsToScore);
+
+            // TODO NPC Enemy Death - improve animation
+            // TODO NPC Enemy Death - improve with explosion VFX
             Animator?.SetBool("Dead", true);
+
+            Sleep();
         }
 
-        protected virtual void Sleep() {
-            gameObject.SetActive(false);
-        }
-
-        protected virtual void Finish()
+        protected virtual void Sleep() 
         {
-            // TODO Inflict damage to Player
-            // Player.Hit(DamageValue);
+            ReturnToPool();
         }
 
         protected virtual void OnCollisionEnter(Collision collision)
         {
             if(collision.collider.TryGetComponent(out WTAmmo ammoBullet))
             {
-                // TODO for Ammo Damage Value
-                Hit(1);
+                Hit(ammoBullet.DamageValue);
             }
         }
 

@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-using CastleRush;
+using CastleRush.UI;
 
 namespace Generics
 {
@@ -14,8 +14,8 @@ namespace Generics
         protected void SetOnAction(bool flag)
             => m_onAction = flag;
 
-        protected Canvas InteractiveCanvas 
-            => UIManager.Instance.InteractiveCanvas;
+        protected Canvas StageCanvas 
+            => UIManager.Instance.StageCanvas;
 
 
         protected virtual void Start()
@@ -28,12 +28,12 @@ namespace Generics
             SetOnAction(true);
 
             RectTransformUtility.ScreenPointToLocalPointInRectangle(
-                (RectTransform)InteractiveCanvas.transform,
+                (RectTransform)StageCanvas.transform,
                 data.position,
-                InteractiveCanvas.worldCamera,
+                StageCanvas.worldCamera,
                 out Vector2 position);
 
-            transform.position = InteractiveCanvas.transform.TransformPoint(position);
+            transform.position = StageCanvas.transform.TransformPoint(position);
         }
 
         public virtual void OnDrop(PointerEventData data)
