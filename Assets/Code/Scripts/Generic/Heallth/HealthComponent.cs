@@ -55,8 +55,6 @@ namespace Generics
             // TODO Dead Notification - Remove it from CrystalPlatformBase
 
             SetIsAlive(false);
-
-            //gameObject.SetActive(false);
         }
 
     }
