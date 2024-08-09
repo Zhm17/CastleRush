@@ -22,7 +22,8 @@ namespace Utils
 
         [Header("Life")]
         [SerializeField] protected float m_lifeTime = 10f;
-        public float LifeTime => m_lifeTime;
+        public float LifeTime 
+            => m_lifeTime;
         public virtual void SetLifeTime(float lifeTime)
             => m_lifeTime = lifeTime;
 
@@ -36,13 +37,12 @@ namespace Utils
 
         protected virtual void OnDisable()
         {
-            StopAllCoroutines();
             ReturnToPool();
         }
 
         protected virtual void OnDestroy()
         {
-            StopAllCoroutines();
+            ReturnToPool();
         }
 
         protected virtual IEnumerator SelfDestruct()
@@ -55,7 +55,8 @@ namespace Utils
         {
             StopAllCoroutines();
 
-            if (null != Pool)
+            if (null != Pool &&
+               gameObject.activeInHierarchy)
             {
                 Pool.Release(this);
                 return;

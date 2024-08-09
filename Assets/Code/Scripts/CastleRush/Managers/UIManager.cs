@@ -54,10 +54,12 @@ namespace CastleRush.UI
 
         protected override void OnDestroy()
         {
-            base.OnDestroy();
+           
             UIStagePanel.OnEndUISState -= SetUIStageState;
             ScoreComponent.OnHighScoreReached -= MatchWon;
             CrystalPlatformBase.OnMatchLost -= MatchLost;
+
+            base.OnDestroy();
         }
 
 

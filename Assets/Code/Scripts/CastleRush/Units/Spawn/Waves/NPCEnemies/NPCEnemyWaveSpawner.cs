@@ -140,7 +140,6 @@ namespace CastleRush.Units {
         {
             yield return new WaitForSeconds(StartCountdownT);
 
-            
             foreach(NPCEWaveUnit unit in WaveUnits) 
             {
                 CreateNSetEnemy(unit);

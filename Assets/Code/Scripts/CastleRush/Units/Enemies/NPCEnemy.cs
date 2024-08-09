@@ -24,7 +24,7 @@ namespace CastleRush.Units
 
         // Points to Score
         // TODO Add to the enemy stats
-        protected int m_pointsToScore = 1;
+        [SerializeField] protected int m_pointsToScore = 1;
         public int PointsToScore 
             => m_pointsToScore;
         public void SetPointsToScore(int pointsToScore)
@@ -93,24 +93,23 @@ namespace CastleRush.Units
             if (OnEnemyBeaten != null)
                 OnEnemyBeaten(PointsToScore);
 
+            //Disable Collision and Physic components
+            GetComponent<Collider>().enabled = false;
+            
+            if(TryGetComponent(out Rigidbody rigidbody))
+                rigidbody.Sleep();
+
             // TODO NPC Enemy Death - improve animation
             // TODO NPC Enemy Death - improve with explosion VFX
             Animator?.SetBool("Dead", true);
 
-            Sleep();
-        }
-
-        protected virtual void Sleep() 
-        {
-            ReturnToPool();
+            gameObject.SetActive(false);
         }
 
         protected virtual void OnCollisionEnter(Collision collision)
         {
             if(collision.collider.TryGetComponent(out WTAmmo ammoBullet))
-            {
                 Hit(ammoBullet.DamageValue);
-            }
         }
 
     }

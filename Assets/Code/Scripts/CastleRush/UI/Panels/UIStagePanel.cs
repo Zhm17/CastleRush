@@ -16,7 +16,7 @@ namespace CastleRush.UI
 
         protected virtual void OnEnable()
         {
-            Execute();
+            
         }
 
         protected virtual void OnDisable()

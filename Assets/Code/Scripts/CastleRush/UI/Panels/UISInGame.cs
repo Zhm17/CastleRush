@@ -11,6 +11,7 @@ namespace CastleRush.UI
         public override void Execute()
         {
             base.Execute();
+
             StageManager.Instance.StartMatch();
         }
 

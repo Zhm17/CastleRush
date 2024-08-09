@@ -35,7 +35,7 @@ namespace CastleRush.Units
             // Set spawn point at the first position point of the waypoint array
             SetSpawnPoint(position);
 
-            return (NPCEnemy)Pool.Get();
+            return (NPCEnemy) Pool.Get();
         }
     }
 }
