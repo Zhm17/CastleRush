@@ -51,7 +51,7 @@ namespace CastleRush.UI
 
         public virtual void BackToMainMenu()
         {
-            SceneManager.LoadScene(SceneManager.GetSceneAt(0).name);
+            SceneManager.LoadScene(0);
         }
 
         public virtual void ReloadStage()
@@ -62,10 +62,11 @@ namespace CastleRush.UI
         public virtual void NextStage()
         {
             int index = SceneManager.GetActiveScene().buildIndex;
+            int nextStageIndex = (index == 0)? 1 : index + 1;
             
-            if (SceneManager.GetSceneByBuildIndex(index+1).IsValid())
+            if (nextStageIndex < SceneManager.sceneCountInBuildSettings)
             {
-                SceneManager.LoadScene(SceneManager.GetSceneByBuildIndex(index+1).name);
+                SceneManager.LoadScene(nextStageIndex);
                 return;
             }
 
