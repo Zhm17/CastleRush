@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using CastleRush.BGM;
 
 namespace CastleRush.UI
 {
@@ -15,6 +16,7 @@ namespace CastleRush.UI
         {
             base.Execute();
 
+            BGMManager.Instance.PlayInGameMusic();
             StartCoroutine(ShowTitleCoroutine());
         }
 

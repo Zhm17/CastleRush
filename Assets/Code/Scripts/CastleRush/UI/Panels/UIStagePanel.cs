@@ -54,6 +54,11 @@ namespace CastleRush.UI
             SceneManager.LoadScene(SceneManager.GetSceneAt(0).name);
         }
 
+        public virtual void ReloadStage()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
         public virtual void NextStage()
         {
             int index = SceneManager.GetActiveScene().buildIndex;

@@ -8,7 +8,8 @@ namespace Utils
     {
         [Header("Item Properties")]
         [SerializeField] int m_id;
-        public int ID => m_id;
+        public int ID 
+            => m_id;
         public void SetID(int id)
             => m_id = id;
 
