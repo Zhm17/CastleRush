@@ -30,6 +30,12 @@ namespace CastleRush.Data.Config
                         Resources.LoadAll<NPCEWaveDataSet>("Data/Level/Waves"))
                 s_npcWavesLib.Add(s_npcWavesLib.Count + 1, waveSet);
         }
+        public static NPCEWaveDataSet GetNPCEWaveDataSet(int id)
+        {
+            if (NPCEnemyWavesLib.ContainsKey(id))
+                    return NPCEnemyWavesLib[id];
+            return null;
+        }
 
 
 

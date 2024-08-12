@@ -9,8 +9,9 @@ namespace CastleRush
                         typeof(ScoreComponent))]
     public class StageManager : Singleton<StageManager>
     {
-        [SerializeField] private int m_stageNumber = 1;
-        public int StageNumber => m_stageNumber;
+        [SerializeField] private int m_stageNumber;
+        public int StageNumber 
+            => m_stageNumber;
 
         private NPCEnemyWaveSpawner EWaveSpawner
             => GetComponent<NPCEnemyWaveSpawner>();

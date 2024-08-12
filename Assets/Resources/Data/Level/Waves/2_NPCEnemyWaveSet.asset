@@ -10,29 +10,43 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 786fc0713f9ef904f87b6e5a7e52bc71, type: 3}
-  m_Name: 1_NPCEnemyWaveSet
+  m_Name: 2_NPCEnemyWaveSet
   m_EditorClassIdentifier: 
-  Level_ID: 1
+  Level_ID: 2
   StartCountDownTime: 3
   CooldownTimeBetweenUnits: 2
   m_npceWaveUnits:
-  - ID: 1
+  - ID: 4
     Stats:
       type: 1
       lifeTime: 60
       damageValue: 1
       maxHealth: 3
       startWalkSpeed: 5
-  - ID: 2
+  - ID: 5
     Stats:
       type: 1
       lifeTime: 60
       damageValue: 1
       maxHealth: 3
       startWalkSpeed: 5
-  - ID: 3
+  - ID: 6
     Stats:
       type: 1
+      lifeTime: 60
+      damageValue: 1
+      maxHealth: 3
+      startWalkSpeed: 5
+  - ID: 7
+    Stats:
+      type: 2
+      lifeTime: 60
+      damageValue: 1
+      maxHealth: 3
+      startWalkSpeed: 5
+  - ID: 8
+    Stats:
+      type: 2
       lifeTime: 60
       damageValue: 1
       maxHealth: 3

@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 786fc0713f9ef904f87b6e5a7e52bc71, type: 3}
+  m_Name: 3_NPCEnemyWaveSet
+  m_EditorClassIdentifier: 
+  Level_ID: 3
+  StartCountDownTime: 3
+  CooldownTimeBetweenUnits: 2
+  m_npceWaveUnits:
+  - ID: 9
+    Stats:
+      type: 1
+      lifeTime: 60
+      damageValue: 1
+      maxHealth: 3
+      startWalkSpeed: 7
+  - ID: 10
+    Stats:
+      type: 1
+      lifeTime: 60
+      damageValue: 1
+      maxHealth: 3
+      startWalkSpeed: 7
+  - ID: 11
+    Stats:
+      type: 1
+      lifeTime: 60
+      damageValue: 1
+      maxHealth: 3
+      startWalkSpeed: 7
+  - ID: 12
+    Stats:
+      type: 1
+      lifeTime: 60
+      damageValue: 1
+      maxHealth: 3
+      startWalkSpeed: 7
+  - ID: 13
+    Stats:
+      type: 1
+      lifeTime: 60
+      damageValue: 1
+      maxHealth: 3
+      startWalkSpeed: 7
+  - ID: 14
+    Stats:
+      type: 2
+      lifeTime: 60
+      damageValue: 1
+      maxHealth: 5
+      startWalkSpeed: 6
+  - ID: 15
+    Stats:
+      type: 2
+      lifeTime: 60
+      damageValue: 1
+      maxHealth: 5
+      startWalkSpeed: 6
+  - ID: 16
+    Stats:
+      type: 2
+      lifeTime: 60
+      damageValue: 1
+      maxHealth: 5
+      startWalkSpeed: 6
+  - ID: 17
+    Stats:
+      type: 2
+      lifeTime: 60
+      damageValue: 1
+      maxHealth: 10
+      startWalkSpeed: 5
+  - ID: 18
+    Stats:
+      type: 2
+      lifeTime: 60
+      damageValue: 1
+      maxHealth: 10
+      startWalkSpeed: 5

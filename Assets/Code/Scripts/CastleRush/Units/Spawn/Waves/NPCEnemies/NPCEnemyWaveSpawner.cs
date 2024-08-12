@@ -14,17 +14,10 @@ namespace CastleRush.Units {
 
         // Wave Data Set
         private StageManager Stage => StageManager.Instance;
-        public Dictionary<int, NPCEWaveDataSet> WavesLib => CastleRushConfig.NPCEnemyWavesLib;
+
 
         private NPCEWaveDataSet m_npceCurrentWaveDataSet
-        {
-            get
-            {
-                if (WavesLib.ContainsKey(Stage.StageNumber))
-                    return WavesLib[Stage.StageNumber];
-                return null;
-            }
-        }
+            => CastleRushConfig.GetNPCEWaveDataSet(Stage.StageNumber);
         public NPCEWaveDataSet CurrentWaveDataSet 
             => m_npceCurrentWaveDataSet;
 
