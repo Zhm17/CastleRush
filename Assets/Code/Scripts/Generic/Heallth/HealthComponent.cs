@@ -4,6 +4,10 @@ namespace Generics
 {
     public class HealthComponent : MonoBehaviour, IDamageable
     {
+        public delegate void HealthAction(GameObject gameObject = null, int value = 0);
+        public static event HealthAction OnHealthUpdate;
+        public static event HealthAction OnDeath;
+
         [SerializeField] protected bool m_isAlive = true;
         public bool IsAlive 
             => m_isAlive;
@@ -42,7 +46,12 @@ namespace Generics
         public virtual void Hit(int damageValue)
         {
             if (CurrentHealth > 0)
+            {
                 SetCurrentHealth(CurrentHealth - damageValue);
+
+                if (OnHealthUpdate != null)
+                    OnHealthUpdate(gameObject, CurrentHealth);
+            }
 
             if (CurrentHealth <= 0)
                 Die();
@@ -50,9 +59,8 @@ namespace Generics
 
         public virtual void Die() 
         {
-            // TODO Dead Notification - Improvement
-            // TODO Dead Notification - Remove it from NPCEnemy
-            // TODO Dead Notification - Remove it from CrystalPlatformBase
+            if (OnDeath != null)
+                OnDeath(gameObject);
 
             SetIsAlive(false);
         }

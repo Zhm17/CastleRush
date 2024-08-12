@@ -73,8 +73,8 @@ namespace CastleRush.Units
             while (true)
             {
                 if(Target != null && 
-                        ( false == Target.IsAlive ||
-                        false == Target.gameObject.activeInHierarchy ))
+                        ( !Target.IsAlive ||
+                          !Target.gameObject.activeInHierarchy ))
                 {
                     RemoveEnemy(NearEnemiesList[0]);
                     SetNextTarget();

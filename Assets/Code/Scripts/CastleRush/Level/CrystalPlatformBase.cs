@@ -56,9 +56,7 @@ namespace CastleRush
         private void OnTriggerEnter(Collider other)
         {
             if(other.TryGetComponent(out NPCEnemy npcEnemy))
-            {
                 healthComponent.Hit(npcEnemy.DamageValue);
-            }
         }
     }
 }

@@ -15,7 +15,7 @@ namespace CastleRush.Units
         [SerializeField] public virtual NPCEnemyType Type => NPCEnemyType.TEST;
 
         // Damage to inflict
-        protected int m_damageValue = 1;
+        [SerializeField] protected int m_damageValue = 1;
         public int DamageValue 
             => m_damageValue;
         public void SetDamageValue(int value) 
