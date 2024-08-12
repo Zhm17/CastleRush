@@ -1,12 +1,15 @@
+using UnityEngine;
+using System.Collections.Generic;
+
 namespace CastleRush.Data
 {
-    [UnityEngine.CreateAssetMenu(fileName = "NewCastleRushPrefabLibs",
+    [CreateAssetMenu(fileName = "NewCastleRushPrefabLibs",
             menuName = "Castle Rush/Prefabs/New Prefab Libs",
             order = 1)]
    
-    public class PrefabLibs : UnityEngine.ScriptableObject
+    public class PrefabLibs : ScriptableObject
     {
-        [UnityEngine.SerializeField]
+        [SerializeField]
         public int LibID = 1;
 
         // Separate in different prefab libraries
@@ -18,21 +21,20 @@ namespace CastleRush.Data
 
         // TOWERS / TURRETS / AMMO - BULLETS
         //Add Turrets Lib
-        [UnityEngine.Header("Weapon Turrets")]
-        [UnityEngine.SerializeField]
-        public System.Collections.Generic.List<WTurretDataField> WTurretPrefabLib;
+        [Header("Weapon Turrets")]
+        [SerializeField]
+        public List<WTurretDataField> WTurretPrefabLib;
 
-        //Add Bullets Lib
-        [UnityEngine.Header("Weapon Turret Ammo / Bullets")]
-        [UnityEngine.SerializeField]
-        public System.Collections.Generic.List<WTABulletDataField> WTABulletsPrefabLib;
+        [Header("Weapon Turret Ammo / Bullets")]
+        [SerializeField]
+        public List<WTABulletDataField> WTABulletsPrefabLib;
 
 
 
         // NPC Enemies
-        [UnityEngine.Header("NPC Enemies")]
-        [UnityEngine.SerializeField] 
-        public System.Collections.Generic.List<NPCEnemyDataField> NPCEnemyPrefabLib;
+        [Header("NPC Enemies")]
+        [SerializeField] 
+        public List<NPCEnemyDataField> NPCEnemyPrefabLib;
 
     }
 }

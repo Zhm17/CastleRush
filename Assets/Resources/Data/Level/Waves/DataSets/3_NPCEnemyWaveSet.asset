@@ -77,12 +77,19 @@ MonoBehaviour:
       type: 2
       lifeTime: 60
       damageValue: 1
-      maxHealth: 10
-      startWalkSpeed: 5
+      maxHealth: 5
+      startWalkSpeed: 6
   - ID: 18
     Stats:
       type: 2
       lifeTime: 60
       damageValue: 1
-      maxHealth: 10
-      startWalkSpeed: 5
+      maxHealth: 5
+      startWalkSpeed: 6
+  - ID: 19
+    Stats:
+      type: 3
+      lifeTime: 60
+      damageValue: 1
+      maxHealth: 20
+      startWalkSpeed: 4

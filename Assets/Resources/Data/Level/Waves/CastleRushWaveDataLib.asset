@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29f1bc256cc04af4eb4d23450b0a4770, type: 3}
+  m_Name: CastleRushWaveDataLib
+  m_EditorClassIdentifier: 
+  Lib:
+  - {fileID: 11400000, guid: 56d6af2076813f244ae0f9c44ed0b17c, type: 2}
+  - {fileID: 11400000, guid: 66839beb015a544418a6bc00f4217632, type: 2}
+  - {fileID: 11400000, guid: bf18ad8a042c98b448daa0d90c16312d, type: 2}

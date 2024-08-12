@@ -1,44 +1,36 @@
 using CastleRush.Units;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace CastleRush.Data.Config
 {
     public static class CastleRushConfig
     {
+        #region WAVE DATA
+
+        // NPC Enemy Waves Libs
+        public static NPCEWaveDataLib NPCEWLib =
+           (NPCEWaveDataLib)
+                Resources.Load("Data/Level/Waves/CastleRushWaveDataLib",
+                    typeof(NPCEWaveDataLib));
+
+        public static NPCEWaveDataSet GetNPCEWaveDataSet(int index)
+        {
+            if (null == NPCEWLib || 
+                index >= NPCEWLib.Lib.Count ||
+                index < 0)
+                    return null;
+
+            return NPCEWLib.Lib[index];
+        }
+
+        #endregion
+
+        #region PREFABS
+
         public static PrefabLibs PrefabLib =
             (PrefabLibs)
             Resources.Load("Data/Lib/CastleRushPrefabLibs",
                 typeof(PrefabLibs));
-
-        // NPC Enemy9 Waves Libs
-        private static Dictionary<int, NPCEWaveDataSet> s_npcWavesLib;
-        public static Dictionary<int, NPCEWaveDataSet> NPCEnemyWavesLib
-        {
-            get
-            {
-                if (null == s_npcWavesLib)
-                    RefreshNPCEWaveList();
-                return s_npcWavesLib;
-            }
-        }
-
-        public static void RefreshNPCEWaveList()
-        {
-            s_npcWavesLib = new Dictionary<int, NPCEWaveDataSet>();
-            foreach (NPCEWaveDataSet waveSet in
-                        Resources.LoadAll<NPCEWaveDataSet>("Data/Level/Waves"))
-                s_npcWavesLib.Add(s_npcWavesLib.Count + 1, waveSet);
-        }
-        public static NPCEWaveDataSet GetNPCEWaveDataSet(int id)
-        {
-            if (NPCEnemyWavesLib.ContainsKey(id))
-                    return NPCEnemyWavesLib[id];
-            return null;
-        }
-
-
-
 
         public static NPCEnemy GetNPCEnemyPrefab(NPCEnemyType enemyType)
         {
@@ -81,5 +73,7 @@ namespace CastleRush.Data.Config
 
             return null; 
         }
+
+        #endregion
     }
 }

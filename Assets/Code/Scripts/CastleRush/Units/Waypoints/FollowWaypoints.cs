@@ -32,7 +32,10 @@ namespace CastleRush.Units
         [SerializeField] private float m_startWalkSpeed = 5f;
         public float StartWalkSpeed => m_startWalkSpeed;
         public void SetStartWalkSpeed(float walkSpeed)
-            => m_startWalkSpeed = walkSpeed;
+        {
+            m_startWalkSpeed = walkSpeed;
+            Reset();
+        }
 
 
         [SerializeField] private float m_walkSpeed = 5f;

@@ -25,8 +25,11 @@ namespace Generics
         [SerializeField] protected int m_maxHealth = 3;
         public virtual int MaxHealth 
             => m_maxHealth;
-        public void SetMaxHealth(int value) 
-            => m_maxHealth = value;
+        public void SetMaxHealth(int value)
+        {
+            m_maxHealth = value; 
+            ResetHealth();
+        }
 
 
         protected virtual void OnEnable()

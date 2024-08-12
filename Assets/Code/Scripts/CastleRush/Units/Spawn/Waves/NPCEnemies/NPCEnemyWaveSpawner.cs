@@ -10,14 +10,13 @@ namespace CastleRush.Units {
     {
         public SpawnerType Type => SpawnerType.NPC_ENEMY;
 
-        
+
 
         // Wave Data Set
         private StageManager Stage => StageManager.Instance;
 
-
         private NPCEWaveDataSet m_npceCurrentWaveDataSet
-            => CastleRushConfig.GetNPCEWaveDataSet(Stage.StageNumber);
+            => CastleRushConfig.GetNPCEWaveDataSet(Stage.StageNumber - 1);
         public NPCEWaveDataSet CurrentWaveDataSet 
             => m_npceCurrentWaveDataSet;
 
@@ -30,6 +29,7 @@ namespace CastleRush.Units {
             {
                 if (null != CurrentWaveDataSet)
                     return CurrentWaveDataSet.StartCountDownTime;
+
                 return m_startCountDownTime;
             }
         }
@@ -41,25 +41,25 @@ namespace CastleRush.Units {
             {
                 if (null != CurrentWaveDataSet)
                     return CurrentWaveDataSet.CooldownTimeBetweenUnits;
+
                 return m_cooldownTimeBetweenUnits;
             }
         }
 
 
-        // NPC Enemy Wave Units
-        [SerializeField] public static List<NPCEWaveUnit> m_npceWaveUnits;
-        public List<NPCEWaveUnit> WaveUnits
-        {
-            get
-            {
-                if (null == m_npceWaveUnits)
-                    m_npceWaveUnits = CurrentWaveDataSet.NPCEWaveUnits;
-                return m_npceWaveUnits;
-            }
-        }
 
+        // NPC Enemy Wave Units
+        private List<NPCEWaveUnit> m_npceWaveUnits
+            => CurrentWaveDataSet.NPCEWaveUnits;
+        public List<NPCEWaveUnit> WaveUnits
+            => m_npceWaveUnits;
+
+
+
+        //Transform Parents
         [Header("Transform parents")]
         [SerializeField] private Transform[] SpawnerParentsT;
+
 
 
         // NPC Enemy Spawners
