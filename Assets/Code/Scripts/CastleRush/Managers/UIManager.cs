@@ -1,6 +1,7 @@
 using Utils;
 using UnityEngine;
 using Generics;
+using CastleRush.Units;
 
 namespace CastleRush.UI
 {
@@ -39,6 +40,7 @@ namespace CastleRush.UI
             UIStagePanel.OnEndUISState += SetUIStageState;
             // On Win
             ScoreComponent.OnHighScoreReached += MatchWon;
+            NPCEnemyTracker.OnAllEnemiesDisabled += MatchWon;
             // On Game Over
             CrystalPlatformBase.OnMatchLost += MatchLost;
 
@@ -48,7 +50,10 @@ namespace CastleRush.UI
         private void OnDisable()
         {
             UIStagePanel.OnEndUISState -= SetUIStageState;
+
             ScoreComponent.OnHighScoreReached -= MatchWon;
+            NPCEnemyTracker.OnAllEnemiesDisabled -= MatchWon;
+
             CrystalPlatformBase.OnMatchLost -= MatchLost;
         }
 
@@ -56,7 +61,10 @@ namespace CastleRush.UI
         {
            
             UIStagePanel.OnEndUISState -= SetUIStageState;
+
             ScoreComponent.OnHighScoreReached -= MatchWon;
+            NPCEnemyTracker.OnAllEnemiesDisabled -= MatchWon;
+            
             CrystalPlatformBase.OnMatchLost -= MatchLost;
 
             base.OnDestroy();

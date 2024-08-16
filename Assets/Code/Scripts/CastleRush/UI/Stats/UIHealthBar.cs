@@ -22,6 +22,7 @@ namespace CastleRush.UI
                 = (float) value;
 
 
+
         [Header("Min / Max")]
         [SerializeField] private int m_min = 0;
         public int Min 

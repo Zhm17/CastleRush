@@ -13,7 +13,7 @@ namespace CastleRush
         public int StageNumber 
             => m_stageNumber;
 
-        private NPCEnemyWaveSpawner EWaveSpawner
+        public NPCEnemyWaveSpawner EnemyWaveSpawner
             => GetComponent<NPCEnemyWaveSpawner>();
         private ScoreComponent Scorer 
             => GetComponent<ScoreComponent>();
@@ -36,9 +36,9 @@ namespace CastleRush
 
         public void StartMatch()
         {
-            EWaveSpawner.StartSpawning();
+            EnemyWaveSpawner.StartSpawning();
 
-            Scorer.SetGoalScoreValue(EWaveSpawner.WaveUnits.Count);
+            Scorer.SetGoalScoreValue(EnemyWaveSpawner.WaveUnits.Count);
         }
     }
 }

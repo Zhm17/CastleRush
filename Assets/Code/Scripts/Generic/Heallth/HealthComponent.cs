@@ -4,9 +4,11 @@ namespace Generics
 {
     public class HealthComponent : MonoBehaviour, IDamageable
     {
-        public delegate void HealthAction(GameObject gameObject = null, int value = 0);
-        public static event HealthAction OnHealthUpdate;
-        public static event HealthAction OnDeath;
+        public delegate void HealthUpdateAction(GameObject gameObject = null, int value = 0);
+        public static event HealthUpdateAction OnHealthUpdate;
+
+        public delegate void DeathAction(GameObject gameObject);
+        public static event DeathAction OnDeath;
 
         [SerializeField] protected bool m_isAlive = true;
         public bool IsAlive 

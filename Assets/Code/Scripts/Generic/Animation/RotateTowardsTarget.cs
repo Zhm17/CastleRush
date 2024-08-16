@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace Generics
@@ -9,34 +10,63 @@ namespace Generics
             =>  m_rotationSpeed;
 
 
-        [SerializeField] private Transform m_target = null;
+        [SerializeField] private Transform m_target;
         public Transform Target 
             => m_target;
         public void SetTarget(Transform target)
         {
             m_target = target;
-            LookToTarget();
+        }
+
+        private void OnEnable()
+        {
+            StartCoroutine(Look2TargetCoroutine());
         }
 
         public void LookToTarget()
         {
-            if (Target == null) return;
+            if (null == Target) 
+                return;
 
             Vector3 direction =
-                (Target.position - transform.position).normalized;
+                (Target.position - 
+                 transform.position).normalized;
 
             Quaternion lookRotation =
                 Quaternion.LookRotation(
-                                    new Vector3(direction.x,
-                                                    0f,
-                                                    direction.z)
-                                    );
+                    new Vector3(
+                        direction.x, 
+                        0f, 
+                        direction.z));
 
             transform.rotation =
-                Quaternion.Slerp(transform.rotation,
-                                    lookRotation,
-                                    RotationSpeed * Time.deltaTime);
+                Quaternion.Slerp(
+                    transform.rotation,
+                    lookRotation,
+                    RotationSpeed * Time.deltaTime);
         }
+
+        IEnumerator Look2TargetCoroutine()
+        {
+            while (true)
+            {
+                LookToTarget();
+
+                yield return null;
+            }
+        }
+
+        private void OnDestroy()
+        {
+            StopAllCoroutines();
+        }
+
+        private void OnDisable()
+        {
+            StopAllCoroutines();
+        }
+
+
 
     }
 }

@@ -11,7 +11,6 @@ namespace CastleRush.Units {
         public SpawnerType Type => SpawnerType.NPC_ENEMY;
 
 
-
         // Wave Data Set
         private StageManager Stage => StageManager.Instance;
 
