@@ -1,11 +1,16 @@
 using System.Collections;
 using UnityEngine;
+using Generics;
 
 namespace CastleRush.Units
 {
     [RequireComponent(typeof(RotateTowardsTarget))]
     public class FollowWaypoints : MonoBehaviour
     {
+        public delegate void WalkAction(GameObject gameObject);
+        public static event WalkAction OnEndPath;
+
+
         [Header("Target")]
         [SerializeField] private Transform m_currentTarget;
         private Transform CurrentTarget => m_currentTarget;
@@ -16,7 +21,7 @@ namespace CastleRush.Units
             {
                 int targetIndex = (CurrentWaypointIndex == 0)? 
                     1 : CurrentWaypointIndex;
-                rttComponent.SetTarget(PathWaypoints.Points[targetIndex]);
+                rttComponent.SetTarget(PathWaypoints.Points[CurrentWaypointIndex]);
             }
         }
 
@@ -31,7 +36,10 @@ namespace CastleRush.Units
         [SerializeField] private float m_startWalkSpeed = 5f;
         public float StartWalkSpeed => m_startWalkSpeed;
         public void SetStartWalkSpeed(float walkSpeed)
-            => m_startWalkSpeed = walkSpeed;
+        {
+            m_startWalkSpeed = walkSpeed;
+            Reset();
+        }
 
 
         [SerializeField] private float m_walkSpeed = 5f;
@@ -87,7 +95,8 @@ namespace CastleRush.Units
 
         private void EndPath()
         {
-            //TODO Notify End Path
+            if(OnEndPath != null)
+                OnEndPath(gameObject);
 
             //Shutdown object
             StopAllCoroutines();

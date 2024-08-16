@@ -4,29 +4,20 @@ using CastleRush.Data.Config;
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
-using UnityEditor.SceneManagement;
 
 namespace CastleRush.Units {
     public class NPCEnemyWaveSpawner : MonoBehaviour
     {
         public SpawnerType Type => SpawnerType.NPC_ENEMY;
 
-        
 
         // Wave Data Set
         private StageManager Stage => StageManager.Instance;
-        public Dictionary<int, NPCEWaveDataSet> WavesLib => CastleRushConfig.NPCEnemyWavesLib;
 
         private NPCEWaveDataSet m_npceCurrentWaveDataSet
-        {
-            get
-            {
-                if (WavesLib.ContainsKey(Stage.StageNumber))
-                    return WavesLib[Stage.StageNumber];
-                return null;
-            }
-        }
-        public NPCEWaveDataSet CurrentWaveDataSet => m_npceCurrentWaveDataSet;
+            => CastleRushConfig.GetNPCEWaveDataSet(Stage.StageNumber - 1);
+        public NPCEWaveDataSet CurrentWaveDataSet 
+            => m_npceCurrentWaveDataSet;
 
 
         // Time
@@ -37,6 +28,7 @@ namespace CastleRush.Units {
             {
                 if (null != CurrentWaveDataSet)
                     return CurrentWaveDataSet.StartCountDownTime;
+
                 return m_startCountDownTime;
             }
         }
@@ -48,28 +40,30 @@ namespace CastleRush.Units {
             {
                 if (null != CurrentWaveDataSet)
                     return CurrentWaveDataSet.CooldownTimeBetweenUnits;
+
                 return m_cooldownTimeBetweenUnits;
             }
         }
 
-        // NPC Enemy Wave Units
-        [SerializeField] public static List<NPCEWaveUnit> m_npceWaveUnits;
-        public List<NPCEWaveUnit> WaveUnits
-        {
-            get
-            {
-                if (null == m_npceWaveUnits)
-                    m_npceWaveUnits = CurrentWaveDataSet.NPCEWaveUnits;
-                return m_npceWaveUnits;
-            }
-        }
 
+
+        // NPC Enemy Wave Units
+        private List<NPCEWaveUnit> m_npceWaveUnits
+            => CurrentWaveDataSet.NPCEWaveUnits;
+        public List<NPCEWaveUnit> WaveUnits
+            => m_npceWaveUnits;
+
+
+
+        //Transform Parents
         [Header("Transform parents")]
         [SerializeField] private Transform[] SpawnerParentsT;
 
+
+
         // NPC Enemy Spawners
         private NPCEnemySpawner m_npcEnemySpawner;
-        private NPCEnemySpawner DefaultSpawner
+        private NPCEnemySpawner DefaultEnemySpawner
         {
             get
             {
@@ -138,7 +132,6 @@ namespace CastleRush.Units {
         {
             yield return new WaitForSeconds(StartCountdownT);
 
-            
             foreach(NPCEWaveUnit unit in WaveUnits) 
             {
                 CreateNSetEnemy(unit);
@@ -150,20 +143,21 @@ namespace CastleRush.Units {
         public virtual NPCEnemy CreateNSetEnemy(NPCEWaveUnit unit)
         {
             NPCEnemy newEnemy = null;
+            Vector3 position = PathWaypoints.Points[0].position;
 
             switch (unit.Stats.type)
             {
                 case NPCEnemyType.TEST:
-                    newEnemy = DefaultSpawner.Create();
+                    newEnemy = DefaultEnemySpawner.Create(position);
                     break;
                 case NPCEnemyType.CRAB:
-                    newEnemy = CrabSpawner.Create();
+                    newEnemy = CrabSpawner.Create(position);
                     break;
                 case NPCEnemyType.WORM:
-                    newEnemy = WormSpawner.Create();
+                    newEnemy = WormSpawner.Create(position);
                     break;
                 case NPCEnemyType.CHEST:
-                    newEnemy = ChestSpawner.Create();
+                    newEnemy = ChestSpawner.Create(position);
                     break;
             }
 

@@ -10,13 +10,20 @@ namespace CastleRush.Data
             order = 1)]
     public class NPCEWaveDataSet : ScriptableObject
     {
-        [SerializeField] int Level_ID; // for design reference and balance purposes
+        [Header("ID")]
+        [SerializeField] public int Level_ID; 
+        // for design reference and balance purposes
 
+        
+        [Header("Cooldown Time")]
         //Start Countdown
         public float StartCountDownTime = 6f;
 
         //Time beetween units
         public float CooldownTimeBetweenUnits = 2f;
+        
+        
+        [Header("Units")]
 
         [SerializeField] public List<NPCEWaveUnit> m_npceWaveUnits;
         public List<NPCEWaveUnit> NPCEWaveUnits 

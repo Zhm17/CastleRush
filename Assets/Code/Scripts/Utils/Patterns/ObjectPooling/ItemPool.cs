@@ -8,20 +8,23 @@ namespace Utils
     {
         [Header("Item Properties")]
         [SerializeField] int m_id;
-        public int ID => m_id;
+        public int ID 
+            => m_id;
         public void SetID(int id)
             => m_id = id;
 
         [Header("Pool")]
         [SerializeField] protected IObjectPool<ItemPool> m_pool;
-        public IObjectPool<ItemPool> Pool => m_pool;
+        public IObjectPool<ItemPool> Pool 
+            => m_pool;
         public virtual void SetPool(IObjectPool<ItemPool> pool)
             => m_pool = pool;
 
 
         [Header("Life")]
         [SerializeField] protected float m_lifeTime = 10f;
-        public float LifeTime => m_lifeTime;
+        public float LifeTime 
+            => m_lifeTime;
         public virtual void SetLifeTime(float lifeTime)
             => m_lifeTime = lifeTime;
 
@@ -40,7 +43,8 @@ namespace Utils
 
         protected virtual void OnDestroy()
         {
-            ReturnToPool();
+            if(isActiveAndEnabled)
+                ReturnToPool();
         }
 
         protected virtual IEnumerator SelfDestruct()
@@ -53,13 +57,11 @@ namespace Utils
         {
             StopAllCoroutines();
 
-            if (null == Pool)
-                gameObject.SetActive(false);
-
-            if (gameObject.activeInHierarchy)
+            if (null != Pool)
+            {
                 Pool.Release(this);
-
-            return;
+                return;
+            }
         }
 
     }
