@@ -2,6 +2,11 @@
 ## An experimental Tower Defense video game prototype
 
 
+The goal is to develop a simple prototype of a tower defense game. (Kingdom Rush, Plants vs Zombies, Orcs Must Die!) This demo is just the base of a project with the potential of scaling the prototype's size, (levels, enemies, difficulty, etc.) 
+
+The demo contains at least: 3 varieties of enemies 3 varieties of towers and the Game flow (Win/Lose)
+
+
 ### Game Loop
 Waves of enemies march to the base to attack the player.
 The player must put turrets in towers to defend the base
