@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2842529279920224700}
   - component: {fileID: 6090393406511709827}
   - component: {fileID: 2842529279920224696}
-  - component: {fileID: 516697231941864775}
+  - component: {fileID: 7248987054322416503}
   - component: {fileID: 1976502459209093284}
   - component: {fileID: 2842529279920224701}
   - component: {fileID: 146474943282113237}
@@ -53,6 +53,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_id: 0
   m_lifeTime: 60
+  m_damageValue: 1
+  m_pointsToScore: 1
 --- !u!114 &2842529279920224696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,7 +71,7 @@ MonoBehaviour:
   m_currentWaypointIndex: 0
   m_startWalkSpeed: 5
   m_walkSpeed: 5
---- !u!114 &516697231941864775
+--- !u!114 &7248987054322416503
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -78,7 +80,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2842529279920224703}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dab049304d673694097b1362deaaac5d, type: 3}
+  m_Script: {fileID: 11500000, guid: f0c76ad15f21f7041a268350a5eec860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_rotationSpeed: 100
@@ -130,6 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe8b4fd8eabfffc448b99b3d035cbdec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_isAlive: 1
   m_currentHealth: 3
   m_maxHealth: 3
 --- !u!54 &1002242488047778193

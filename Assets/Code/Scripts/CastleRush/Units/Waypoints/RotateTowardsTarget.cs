@@ -18,7 +18,7 @@ namespace CastleRush.Units
 
         public void LookToTarget()
         {
-            if (Target == null) return;
+            if (null == Target) return;
 
             Vector3 direction =
                 (Target.position - transform.position).normalized;
